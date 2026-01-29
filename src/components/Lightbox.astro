@@ -1,0 +1,20 @@
+
+<script>
+  import GLightbox from 'glightbox';
+
+  function initLightbox() {
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      loop: true,
+      autoplayVideos: true
+    });
+  }
+
+  // Initialize on load
+  initLightbox();
+
+  // Re-initialize on view transitions if enabled, or simple page load
+  document.addEventListener('astro:page-load', initLightbox);
+  // Also catch standard DOM content loaded just in case
+  document.addEventListener('DOMContentLoaded', initLightbox);
+</script>

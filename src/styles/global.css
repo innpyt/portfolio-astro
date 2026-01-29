@@ -1,0 +1,43 @@
+@import 'tailwindcss';
+
+:root {
+    --color-bg: #0f172a;
+    --color-text: #e2e8f0;
+    --color-primary: #38bdf8;
+    --color-secondary: #2dd4bf;
+    --color-accent: #0ea5e9;
+    --font-body: 'Inter', system-ui, sans-serif;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--color-secondary);
+}
+
+/* Custom Utilities */
+.tech-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    backdrop-filter: blur(10px);
+}

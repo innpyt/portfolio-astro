@@ -1,0 +1,65 @@
+
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import Lightbox from '../../components/Lightbox.astro';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout title={`${project.data.title} | Alex Schmidt`}>
+  <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <a href="/" class="inline-flex items-center text-sky-400 hover:text-sky-300 mb-8 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+      </svg>
+      Back to Projects
+    </a>
+
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-sky-400 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-img:rounded-xl prose-img:border prose-img:border-slate-700/50">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">{project.data.title}</h1>
+      
+      <div class="flex flex-wrap gap-2 mb-8 not-prose">
+        {project.data.tags.map(tag => (
+          <span class="text-sm font-mono py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sky-300">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <div class="project-content">
+        <Content />
+      </div>
+    </article>
+  </div>
+  
+  <Lightbox />
+</Layout>
+
+<script>
+    // Link adjustment for lightbox
+    document.addEventListener('astro:page-load', () => {
+        const images = document.querySelectorAll('.project-content img');
+        images.forEach(img => {
+            // Wrap images in anchor tag for lightbox if not already wrapped
+            if (img.parentElement?.tagName !== 'A') {
+                const wrapper = document.createElement('a');
+                wrapper.href = img.getAttribute('src') || '';
+                wrapper.className = 'glightbox';
+                // @ts-ignore
+                wrapper.dataset.gallery = 'project-gallery';
+                img.parentNode?.insertBefore(wrapper, img);
+                wrapper.appendChild(img);
+            }
+        });
+    });
+</script>
