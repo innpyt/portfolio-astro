@@ -10,12 +10,6 @@ highlight: true
 <img src="/images/adamhall/home.png"/>
 </a>
 
-> ## Table of Contents
->
-> - [Highlights](#highlights)
-> - [Accomplishments](#accomplishments)
-> - [Gallery](#gallery)
-
 **Project description:** The Adam Hall Group is one of the world's top three manufacturers of event technology. It develops flight cases, loudspeakers, lighting, stage, and studio equipment, among other products. As an international sales and service company, it also distributes more than 30 renowned brands to its business partners. With its 220 employees, it sells over 8,000 immediately available items in 200 countries, generating annual sales of over €80 million.
 
 **Tech Stack**: Vue 3, Nuxt, Typescript, Headless, SSR, Tailwind

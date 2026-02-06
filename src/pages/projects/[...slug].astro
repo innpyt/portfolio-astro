@@ -3,49 +3,117 @@
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import Lightbox from '../../components/Lightbox.astro';
+import { sortProjectsSidebar } from '../../utils/projectSort';
+
+// ... (existing code)
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map(project => ({
     params: { slug: project.slug },
     props: { project },
-  }));
+    }));
 }
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content, headings: allHeadings } = await project.render(); // Rename to allHeadings
+const headings = allHeadings.filter(h => h.depth === 2); // Filter for h2 only
+
+// Logic for "Other Projects"
+const allProjects = await getCollection('projects');
+
+// Find related tags (intersecting tags)
+// Find related tags (intersecting tags)
+const currentTag = project.data.tags[0]; // Primary tag
+const relatedProjects = allProjects.filter(p => {
+    // Check if primary tag matches
+    return p.data.tags.includes(currentTag);
+});
+
+// Sort using shared logic
+const sortedRelatedPromise = sortProjectsSidebar(relatedProjects);
+// Only take top N? Or all? User said "list of other projects", imply all.
+const sortedRelated = sortedRelatedPromise;
+
 ---
 
 <Layout title={`${project.data.title} | Alex Schmidt`}>
-  <div class="container mx-auto px-4 py-8 max-w-4xl">
-    <a href="/" class="inline-flex items-center text-sky-400 hover:text-sky-300 mb-8 transition-colors">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
-      </svg>
-      Back to Projects
-    </a>
+  
+  <div slot="sidebar" class="space-y-8">
+      <!-- Back Link -->
+       <a href="/" class="inline-flex items-center text-xl text-sky-400 hover:text-sky-300 transition-colors group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 transition-transform group-hover:-translate-x-1" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd" />
+        </svg>
+        Back to Projects
+      </a>
 
-    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-sky-400 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-img:rounded-xl prose-img:border prose-img:border-slate-700/50">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+      {headings.length > 0 && (
+        <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm min-h-[200px]">
+            <h3 class="text-sm font-bold uppercase text-slate-400 mb-4 tracking-wider">Table of Contents</h3>
+            <nav class="toc">
+                <ul class="space-y-2 text-sm list-disc pl-4 marker:text-slate-600">
+                    {headings.map(heading => (
+                        <li class={`pl-${(heading.depth - 1) * 2}`}>
+                            <a href={`#${heading.slug}`} class="text-slate-300 hover:text-sky-400 transition-colors block py-0.5">
+                                {heading.text}
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        </div>
+      )}
+
+      {sortedRelated.length > 0 && (
+        <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm">
+                <h3 class="text-sm font-bold uppercase text-slate-400 mb-4 tracking-wider">
+                    Other {project.data.tags[0] || ''} Projects
+                </h3>
+                <ul class="space-y-2 text-sm list-disc pl-4 marker:text-slate-600">
+                {sortedRelated.map(p => {
+                    const isCurrent = p.slug === project.slug;
+                    return (
+                    <li>
+                        <a href={`/projects/${p.slug}`} class={`block transition-colors ${isCurrent ? '!text-teal-400 font-bold pointer-events-none' : 'text-slate-300 hover:text-sky-400'}`}>
+                            <span class="font-medium flex items-center gap-2">
+                                {p.data.title}
+                                {p.data.highlight && (
+                                    <span class="text-yellow-400" title="Featured Project">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-5 h-5 fill-current"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M313 87.2c9.2-7.3 15-18.6 15-31.2 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 12.6 5.9 23.9 15 31.2L194.6 194.8c-10 15.7-31.3 19.6-46.2 8.4L88.9 158.7c4.5-6.4 7.1-14.3 7.1-22.7 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 21.8 17.5 39.6 39.2 40L87.8 393.5c4.7 31.3 31.6 54.5 63.3 54.5l273.8 0c31.7 0 58.6-23.2 63.3-54.5L520.8 176c21.7-.4 39.2-18.2 39.2-40 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 8.4 2.6 16.3 7.1 22.7l-59.4 44.6c-14.9 11.2-36.2 7.3-46.2-8.4L313 87.2z"/></svg>
+                                    </span>
+                                )}
+                            </span>
+                        </a>
+                    </li>
+                )})}
+                </ul>
+        </div>
+      )}
+  </div>
+
+  <div class="max-w-4xl">
+    <article class="prose prose-invert prose-lg max-w-none prose-headings:text-sky-400 prose-headings:scroll-mt-20 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-img:rounded-xl prose-img:border prose-img:border-slate-700/50">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
         {project.data.title}
         {project.data.highlight && (
-          <span class="text-yellow-400" title="Featured Project">
+            <span class="text-yellow-400" title="Featured Project">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="w-8 h-8 fill-current"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.--><path d="M313 87.2c9.2-7.3 15-18.6 15-31.2 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 12.6 5.9 23.9 15 31.2L194.6 194.8c-10 15.7-31.3 19.6-46.2 8.4L88.9 158.7c4.5-6.4 7.1-14.3 7.1-22.7 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 21.8 17.5 39.6 39.2 40L87.8 393.5c4.7 31.3 31.6 54.5 63.3 54.5l273.8 0c31.7 0 58.6-23.2 63.3-54.5L520.8 176c21.7-.4 39.2-18.2 39.2-40 0-22.1-17.9-40-40-40s-40 17.9-40 40c0 8.4 2.6 16.3 7.1 22.7l-59.4 44.6c-14.9 11.2-36.2 7.3-46.2-8.4L313 87.2z"/></svg>
-          </span>
+            </span>
         )}
-      </h1>
-      
-      <div class="flex flex-wrap gap-2 mb-8 not-prose">
+        </h1>
+        
+        <div class="flex flex-wrap gap-2 mb-8 not-prose">
         {project.data.tags.map(tag => (
-          <span class="text-sm font-mono py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sky-300">
+            <span class="text-sm font-mono py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sky-300">
             {tag}
-          </span>
+            </span>
         ))}
-      </div>
+        </div>
 
-      <div class="project-content">
+        <div class="project-content [&>h1]:hidden">
         <Content />
-      </div>
+        </div>
     </article>
   </div>
   
@@ -57,7 +125,6 @@ const { Content } = await project.render();
     document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll('.project-content img');
         images.forEach(img => {
-            // Wrap images in anchor tag for lightbox if not already wrapped
             if (img.parentElement?.tagName !== 'A') {
                 const wrapper = document.createElement('a');
                 wrapper.href = img.getAttribute('src') || '';

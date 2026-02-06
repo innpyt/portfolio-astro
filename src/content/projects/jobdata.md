@@ -2,10 +2,8 @@
 title: 'JobData'
 tags: ['Python', 'Pet']
 image: '/images/jobdata/output_15_0.png'
-weight: 0
+weight: 2
 ---
-
-# [Projects](/portfolio/) | JobData
 
 <a href="/images/jobdata/output_15_0.png" class="glightbox">
 <img src="/images/jobdata/output_15_0.png"/>
@@ -16,8 +14,6 @@ weight: 0
 
 **Tech Stack**: Python, Pandas, Matplotlib, Seaborn
 
-> ## Table of Contents
->
 > - [Job Titles](#job-titles)
 > - [by name](#1-by-name-developer-vs-engineer-vs-entwickler)
 > - [by technology](#2-by-technology)
@@ -96,20 +92,7 @@ df.sample(5)
     memory usage: 417.2+ KB
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -134,7 +117,7 @@ df.sample(5)
       <td>Javascript Frontend Engineer with verification</td>
       <td>https://www.linkedin.com/jobs/view/4308011925/...</td>
       <td>Amber</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>...</td>
       <td>False</td>
       <td>linkedin</td>
@@ -148,12 +131,12 @@ df.sample(5)
       <td>Senior Fullstack Engineer with verification</td>
       <td>https://www.linkedin.com/jobs/view/4307218977/...</td>
       <td>FAIRTIQ</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>...</td>
       <td>True</td>
       <td>linkedin</td>
       <td>new</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>LN fullstack DE, LN fullstack MUC</td>
     </tr>
     <tr>
@@ -162,12 +145,12 @@ df.sample(5)
       <td>Fullstack Engineer (Web3)</td>
       <td>https://www.linkedin.com/jobs/view/4312086611/...</td>
       <td>Kiln</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>...</td>
       <td>False</td>
       <td>linkedin</td>
       <td>new</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>LN fullstack DE, LN fullstack MUC</td>
     </tr>
     <tr>
@@ -176,12 +159,12 @@ df.sample(5)
       <td>(Senior) Fullstack Developer (f/m/d)</td>
       <td>https://www.linkedin.com/jobs/view/4298597780/...</td>
       <td>plancraft</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>...</td>
       <td>False</td>
       <td>linkedin</td>
       <td>new</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>LN fullstack DE, LN fullstack MUC</td>
     </tr>
     <tr>
@@ -190,12 +173,12 @@ df.sample(5)
       <td>Fullstack Entwickler - Java / Kotlin / Angular...</td>
       <td>https://www.linkedin.com/jobs/view/4310295685/...</td>
       <td>Optimus Search</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>...</td>
       <td>True</td>
       <td>linkedin</td>
       <td>new</td>
-      <td>NaN</td>
+      <td>-</td>
       <td>LN fullstack MUC</td>
     </tr>
   </tbody>
@@ -215,9 +198,8 @@ before = len(df)
 df.drop_duplicates(subset=['job_title', 'company_name'], keep='first', inplace=True)
 after = len(df)
 print(f"removed {before - after} jobs")
+# removed 898 jobs
 ```
-
-    removed 898 jobs
 
 Now, let's break down job titles by category.
 
@@ -225,7 +207,7 @@ Now, let's break down job titles by category.
 
 _PS: 'Entwickler' is the German translation for 'developer'._
 
-**Why?:** Whether or not you read [The Great Divide](https://css-tricks.com/the-great-divide/){:target="\_blank"} omitting a common job title term can significantly affect the **number** of jobs found.
+**Why?:** Whether or not you read [<a href="https://css-tricks.com/the-great-divide/" target="_blank" class="inline">The Great Divide</a>] omitting a common job title term can significantly affect the **number** of jobs found.
 Another reason: While multiple articles suggest **Engineers** receive higher salaries, my relatively small dataset (see [Salary Section](#salary-analysis-and-normalization)) couldn't confirm this difference.
 
 ```python
@@ -265,7 +247,6 @@ plt.tight_layout()
 <a href="/images/jobdata/output_12_0.png" class="glightbox">
 <img src="/images/jobdata/output_12_0.png" />
 </a>
-
 
 That's the reason why I decided that Fullstack transition is a way. Job market is twice as bigger.<br>
 However, Fullstack roles also involve a much wider technology spread (Node, Java, PHP, .NET, Go, etc.).
@@ -319,7 +300,7 @@ plt.tight_layout()
 
 As shown, the **number** of React jobs surpasses Angular and Vue combined.<br>
 But Java + Angular often come together and are therefore also a strong pick.<br>
-PS: keep in mind that these are only the jobs containing term in the title. But, given that I've applied to almost every Vue job I found, I can assure you that the real amount is not that far from the above extrapolation.<br>
+PS: keep in mind that these are only the jobs containing term in the title. But, given that I've applied to almost every Vue job I found, I can assure you that the real amount is not that far from the above extrapolation.<br><br>
 Which you can find here https://www.linkedin.com/pulse/i-applied-236-jobs-frontend-developer-germany-since-march-schmidt-pihuf/#ember545 (156 React vs 60 Vue)
 
 ## Source Performance and Redundancy
@@ -678,31 +659,25 @@ generate_plots(fullstack_df_gd, "Fullstack Jobs GD")
 <img src="/images/jobdata/output_26_0.png" />
 </a>
 
-
 <a href="/images/jobdata/output_26_1.png" class="glightbox">
 <img src="/images/jobdata/output_26_1.png" />
 </a>
-
 
 <a href="/images/jobdata/output_26_2.png" class="glightbox">
 <img src="/images/jobdata/output_26_2.png" />
 </a>
 
-
 <a href="/images/jobdata/output_23_0.png" class="glightbox">
 <img src="/images/jobdata/output_23_0.png" />
 </a>
-
 
 <a href="/images/jobdata/output_26_4.png" class="glightbox">
 <img src="/images/jobdata/output_26_4.png" />
 </a>
 
-
 <a href="/images/jobdata/output_26_5.png" class="glightbox">
 <img src="/images/jobdata/output_26_5.png" />
 </a>
-
 
 **Note**: Following points are to be interpreted as basic descriptive analysis with no statistical significance due to the relatively small size of the dataset. For more accurate data I suggest you to check salary reports on spesialised websites.
 

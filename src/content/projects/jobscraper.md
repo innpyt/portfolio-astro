@@ -6,8 +6,6 @@ weight: 1
 highlight: true
 ---
 
-# [Projects](/portfolio/) | JobScraper
-
 <a href="/images/jobscraper/home.png" class="glightbox">
 <img src="/images/jobscraper/home.png"/>
 </a>

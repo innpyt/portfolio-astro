@@ -9,7 +9,14 @@ interface Props {
 const { project } = Astro.props;
 ---
 
-<a href={`/projects/${project.slug}`} class="project-card group relative overflow-hidden rounded-xl tech-card block transition-transform hover:-translate-y-1 hover:shadow-cyan-500/20 hover:shadow-lg" data-tags={JSON.stringify(project.data.tags)}>
+<a 
+  href={`/projects/${project.slug}`} 
+  class="project-card group relative overflow-hidden rounded-xl tech-card block transition-transform hover:-translate-y-1 hover:shadow-cyan-500/20 hover:shadow-lg" 
+  data-tags={JSON.stringify(project.data.tags)}
+  data-weight={project.data.weight || 0}
+  data-highlight={project.data.highlight ? 'true' : 'false'}
+  data-title={project.data.title}
+>
   <div class="aspect-video w-full overflow-hidden bg-slate-800">
     {project.data.image ? (
       <img 

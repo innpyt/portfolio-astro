@@ -5,27 +5,12 @@ image: '/images/moviedata/output_31_0.png'
 weight: 0
 ---
 
-# [Projects](/portfolio/) | MovieData
-
 <a href="/images/moviedata/output_31_0.png" class="glightbox">
 <img src="/images/moviedata/output_31_0.png"/>
 </a>
 **Project description:** Personal python data analytics notebook from August 2025
 
 **Tech Stack**: Python, Pandas, Matplotlib, Seaborn, Sklearn
-
-> ## Table of Contents
->
-> - [Descriptive Statistics](#descriptive-statistics)
-> - [Most common genres](#most-common-genres)
-> - [Genre with the most gross](#genre-with-the-most-gross)
-> - [Directors with most films](#directors-with-most-films)
-> - [Directors with max gross](#directors-with-max-gross)
-> - [Movie Releases over Time](#movie-releases-over-time)
-> - [Budget vs Revenue (Seaborn Bubble Charts)](#budget-vs-revenue-seaborn-bubble-charts)
-> - [Seaborn Regression Plots](#seaborn-regression-plots)
-> - [Own Regression](#own-regression-with-scikit-learn)
-> - [Model Prediction](#model-prediction)
 
 ## Introduction
 
@@ -87,20 +72,7 @@ df.sample(5)
     memory usage: 314.0+ KB
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -216,20 +188,7 @@ df.head(5)
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -330,20 +289,7 @@ df.describe()
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -427,7 +373,7 @@ df.describe()
       <td>249,472</td>
       <td>51,786,917</td>
       <td>236,752,803</td>
-      <td>NaN</td>
+      <td>-</td>
     </tr>
   </tbody>
 </table>
@@ -445,20 +391,7 @@ df[df.budget.isin([6000, 356000000])]
 ```
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -546,7 +479,6 @@ plt.show()
 <a href="/images/moviedata/output_22_0.png" class="glightbox">    
 <img src="/images/moviedata/output_22_0.png" />
 </a>
-
 
 ## Genre with the most gross
 

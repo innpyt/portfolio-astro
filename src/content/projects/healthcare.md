@@ -5,7 +5,7 @@ image: '/images/healthcare/home.png'
 weight: 0
 ---
 
-# [Projects](/portfolio/) | HealthcareTA ([Github](https://github.com/innpyt/healthcare-ta/){:target="\_blank"})
+[<a href="https://github.com/innpyt/healthcare-ta/" target="_blank" class="inline">Github</a>]
 
 <a href="/images/healthcare/home.png" class="glightbox">
 <img src="/images/healthcare/home.png"/>
@@ -20,7 +20,7 @@ weight: 0
 - easy dockerised setup
 - FastAPI routes with OpenAPI Documentation
 - PostresSQL with schema, programmatically generated demo data, and db viewer
-- basic data visualisations using [Nivo](https://nivo.rocks/){:target="\_blank"})
+- basic data visualisations using [<a href="https://nivo.rocks/" target="_blank" class="inline">Nivo</a>]
 
 ## Gallery
 

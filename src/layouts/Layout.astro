@@ -1,5 +1,6 @@
 
 ---
+import Sidebar from '../components/Sidebar.astro';
 import '../styles/global.css';
 import 'glightbox/dist/css/glightbox.min.css';
 
@@ -7,7 +8,7 @@ interface Props {
 	title?: string;
 }
 
-const { title = "Alex Schmidt | Portfolio" } = Astro.props;
+const { title = "Alexander Schmidt | Senior Fullstack Engineer" } = Astro.props;
 ---
 
 <!doctype html>
@@ -22,12 +23,41 @@ const { title = "Alex Schmidt | Portfolio" } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="bg-slate-900 text-slate-200 min-h-screen flex flex-col">
-        <main class="flex-grow">
-		    <slot />
-        </main>
+	<body class="bg-slate-900 text-slate-200 min-h-screen">
+        <style>
+            ::-webkit-scrollbar {
+                width: 8px;
+            }
+            ::-webkit-scrollbar-track {
+                background: #0f172a; 
+            }
+            ::-webkit-scrollbar-thumb {
+                background: #334155; 
+                border-radius: 4px;
+            }
+            ::-webkit-scrollbar-thumb:hover {
+                background: #475569; 
+            }
+        </style>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                <!-- Left Sidebar -->
+                <div class="md:col-span-3 lg:col-span-4">
+                    <div class="md:sticky md:top-12">
+                        <slot name="sidebar">
+                            <Sidebar />
+                        </slot>
+                    </div>
+                </div>
+
+                <!-- Right Content -->
+                <main class="md:col-span-9 lg:col-span-8">
+                    <slot />
+                </main>
+            </div>
+        </div>
         
-        <footer class="py-6 text-center text-slate-500 text-sm">
+        <footer class="py-6 text-center text-slate-600 text-xs border-t border-slate-800/50 mt-12 bg-slate-900 z-10 relative">
             &copy; {new Date().getFullYear()} Alex Schmidt. All rights reserved.
         </footer>
 	</body>
