@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
 
 :root {
     --color-bg: #0f172a;

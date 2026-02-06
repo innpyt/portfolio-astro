@@ -2,7 +2,8 @@
 title: 'JobScraper'
 tags: ['Python', 'Pet']
 image: '/images/jobscraper/home.png'
-weight: 0
+weight: 1
+highlight: true
 ---
 
 # [Projects](/portfolio/) | JobScraper
