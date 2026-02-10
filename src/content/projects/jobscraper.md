@@ -2,7 +2,7 @@
 title: 'JobScraper'
 tags: ['Python', 'Pet']
 image: '/images/jobscraper/home.png'
-weight: 1
+weight: 3
 highlight: true
 ---
 

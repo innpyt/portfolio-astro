@@ -2,7 +2,7 @@
 title: 'JobDash'
 tags: ['Python', 'Pet']
 image: '/images/jobdash/home.png'
-weight: 1
+weight: 2
 ---
 
 <a href="/images/jobdash/home.png" class="glightbox">

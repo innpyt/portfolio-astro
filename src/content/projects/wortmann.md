@@ -2,7 +2,7 @@
 title: 'Wortmann'
 tags: ['Vue']
 image: '/images/wortmann/home.png'
-weight: 0
+weight: 2
 ---
 
 <a href="/images/wortmann/home.png" class="glightbox">

@@ -2,7 +2,7 @@
 title: 'TanEvents'
 tags: ['React', 'Pet']
 image: '/images/tanevents/home.png'
-weight: 0
+weight: 1
 ---
 
 <img src="/images/tanevents/home.png"/>

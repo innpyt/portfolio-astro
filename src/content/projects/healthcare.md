@@ -2,7 +2,7 @@
 title: 'HealthcareTA'
 tags: ['React', 'Python', 'TA']
 image: '/images/healthcare/home.png'
-weight: 0
+weight: 1
 ---
 
 [<a href="https://github.com/innpyt/healthcare-ta/" target="_blank" class="inline">Github</a>]

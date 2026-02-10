@@ -2,7 +2,7 @@
 title: 'ExpenseTracker'
 tags: ['React', 'Pet']
 image: '/images/expensetracker/home.png'
-weight: 0
+weight: 5
 ---
 
 <img src="/images/expensetracker/home.png"/>

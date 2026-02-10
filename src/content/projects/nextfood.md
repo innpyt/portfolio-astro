@@ -2,7 +2,7 @@
 title: 'NextFood'
 tags: ['React', 'Pet']
 image: '/images/nextfood/home.png'
-weight: 0
+weight: 1
 ---
 
 <img src="/images/nextfood/home.png"/>
