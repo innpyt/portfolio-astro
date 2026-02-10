@@ -16,6 +16,9 @@
     Python
   </button>
 </div>
+<div id="filter-description" class="text-center text-slate-400 max-w-2xl mx-auto my-6 min-h-[3rem] transition-all duration-300">
+    <!-- Description will be injected here -->
+</div>
 
 <script>
   function setupFilters() {
@@ -29,6 +32,16 @@
         card.dataset.initialOrder = index;
     });
 
+    const descriptions = {
+        'all': 'Collection of recent work from real-world enterprice ecommerce to data science and automation utilities.',
+        'Vue': 'Real-world enterprise ecommerce platforms focusing headless Typescript, Vue 3,Nuxt.js, Pinia, and Tailwind',
+        'React': 'Advanced explorations of the modern React 16-19 ecosystem: Next.js, Tanstack, React Query, Server Components, Redux/Zustand and performance optimization.',
+        'Python': 'Automation and Data science utilities leveraging the PyData stack (Pandas, Beautiful Soup, Request, Flask, Pandas, NumPy, Scikit Learn, Plotly, and Matplotlib)'
+    };
+
+    const descContainer = document.getElementById('filter-description');
+    if (descContainer) descContainer.textContent = descriptions['all'];
+
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
         // Toggle active class
@@ -40,6 +53,15 @@
         btn.classList.remove('text-slate-400');
 
         const filter = btn.getAttribute('data-filter');
+        // @ts-ignore
+        if (descContainer) {
+            descContainer.style.opacity = '0';
+            setTimeout(() => {
+                // @ts-ignore
+                descContainer.textContent = descriptions[filter] || '';
+                descContainer.style.opacity = '1';
+            }, 150);
+        }
 
         // Sorting Logic
         let sortedCards = [...cards];
