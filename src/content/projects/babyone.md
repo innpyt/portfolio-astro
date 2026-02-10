@@ -3,6 +3,7 @@ title: 'Babyone'
 tags: ['Vue']
 image: '/images/babyone/home.png'
 weight: 0
+stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 ---
 
 <a href="/images/babyone/home.png" class="glightbox">
@@ -10,8 +11,6 @@ weight: 0
 </a>
 
 **Project description:** BabyOne has been the leading omnichannel provider of baby and toddler products in the franchise system in the DACH region for over 35 years. We offer expectant and young families a wide range of products from our own and third-party brands, as well as customized service offerings – on-site, in one of our 28 own stores or 76 franchise stores, and digitally via our online shop. BabyOne is a second-generation, owner-managed family business run by Dr. Anna Weber and Dr. Jan-Willem Weischer. The company employs over 1,400 people at its headquarters, its own stores, and its franchise stores. BabyOne Franchise- und Systemzentrale GmbH is based in Münster.
-
-**Tech Stack**: Shopware 6, Vue, Twig, Javascript
 
 ## Highlights
 

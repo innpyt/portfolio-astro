@@ -3,6 +3,7 @@ title: 'HealthcareTA'
 tags: ['React', 'Python', 'TA']
 image: '/images/healthcare/home.png'
 weight: 1
+stack: ['Python FastAPI', 'PostgresSQL', 'React', 'Docker']
 ---
 
 [<a href="https://github.com/innpyt/healthcare-ta/" target="_blank" class="inline">Github</a>]
@@ -12,8 +13,6 @@ weight: 1
 </a>
 
 **Project description:** This project was a solution for the technical case for the Senior Software Engineer position. It is a basic healthcare data platform focused on claims and prescription data, with a relational database, RESTful APIs, and a minimal analytics dashboard.
-
-**Tech Stack**: Python FastAPI, PostgresSQL, React, Docker
 
 ## Highlights
 

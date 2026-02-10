@@ -3,13 +3,12 @@ title: 'Placepicker'
 tags: ['React', 'Pet']
 image: '/images/placepicker/home.png'
 weight: 0
+stack: ['React', 'Javascript']
 ---
 
 <img src="/images/placepicker/home.png"/>
 
 **Project description:** React learn project from 2020
-
-**Tech Stack**: React 16, Javascript
 
 ## Highlights
 

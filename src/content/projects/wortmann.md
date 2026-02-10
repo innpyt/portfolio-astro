@@ -3,6 +3,8 @@ title: 'Wortmann'
 tags: ['Vue']
 image: '/images/wortmann/home.png'
 weight: 2
+stack: ['Shopware 6', 'PWA', 'Vue', 'Twig', 'Typescript', 'Javascript']
+highlight: true
 ---
 
 <a href="/images/wortmann/home.png" class="glightbox">
@@ -10,8 +12,6 @@ weight: 2
 </a>
 
 **Project description:** The Wortmann Group, based in Detmold, Germany, is best known for its Tamaris brand and is one of the largest shoe manufacturing and distribution companies in Europe and is considered the market leader for fashionable women's shoes. Its collections are available in over 70 countries and more than 15,000 shoe stores worldwide. In addition to the top brand Tamaris, the group also includes the brands Marco Tozzi, Caprice, Jana, and s.Oliver shoes.
-
-**Tech Stack**: Shopware 6, PWA, Vue, Twig, Typescript, Javascript,
 
 ## Highlights
 

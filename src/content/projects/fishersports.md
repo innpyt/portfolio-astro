@@ -3,6 +3,7 @@ title: 'Fishersports'
 tags: ['Vue']
 image: '/images/fishersports/home.png'
 weight: 0
+stack: ['Vue 3', 'Nuxt', 'Typescript', 'Headless', 'SSR', 'Tailwind']
 ---
 
 <a href="/images/fishersports/home.png" class="glightbox">
@@ -10,8 +11,6 @@ weight: 0
 </a>
 
 **Project description:** Fishersports is market leader in Nordic and Alpine top-level sports and one of the largest ski manufacturers worldwide.
-
-**Tech Stack**: Vue 3, Nuxt, Typescript, Headless, SSR, Tailwind
 
 ## Accomplishments
 

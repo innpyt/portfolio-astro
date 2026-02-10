@@ -3,13 +3,12 @@ title: 'TanEvents'
 tags: ['React', 'Pet']
 image: '/images/tanevents/home.png'
 weight: 1
+stack: ['React 19', 'React Query', 'Tanstack', 'Javascript']
 ---
 
 <img src="/images/tanevents/home.png"/>
 
 **Project description:** React learn project from 2024
-
-**Tech Stack**: React 19, React Query, Tanstack, Javascript
 
 ## Highlights
 

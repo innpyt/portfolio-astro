@@ -3,13 +3,12 @@ title: 'ExpenseTracker'
 tags: ['React', 'Pet']
 image: '/images/expensetracker/home.png'
 weight: 5
+stack: ['React 19', 'Typescript', 'Zustand', 'Tailwind']
 ---
 
 <img src="/images/expensetracker/home.png"/>
 
 **Project description:** Personal dashboard app from 2025
-
-**Tech Stack**: React 19, Typescript, Zustand, Tailwind
 
 ## Highlights
 

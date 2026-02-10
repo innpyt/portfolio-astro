@@ -2,7 +2,7 @@
 title: 'Eterna'
 tags: ['Vue']
 image: '/images/eterna/home.png'
-weight: 0
+weight: 1
 ---
 
 <a href="/images/eterna/home.png" class="glightbox">
@@ -10,8 +10,6 @@ weight: 0
 </a>
 
 **Project description:** Founded in 1863 as a lingerie factory, the long-established ETERNA company stands for timelessly modern elegance, the highest quality, and numerous innovations in modern men's shirts and women's blouses. With its patented invention of shirt collars made of special fabric, the company was the world's first clothing company to be certified according to the Oeko-Tex Standard 100 plus and remains the market leader in crease- and iron-free shirts and blouses. As a specialist, ETERNA can fully utilize its in-depth knowledge of its core product range – perfect fit, variation in sleeve lengths and variations, and collar shapes are just a few examples. With high-quality cotton fabrics and the latest clothing innovations, ETERNA asserts itself as a master of business fashion.
-
-**Tech Stack**: Shopware 6, Vue, Micro vue-apps, Twig, Javascript
 
 ## Highlights
 

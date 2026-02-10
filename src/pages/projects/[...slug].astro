@@ -92,9 +92,9 @@ const sortedRelated = sortedRelatedPromise;
       )}
   </div>
 
-  <div class="max-w-4xl">
+  <div class="max-w-4xl pt-15">
     <article class="prose prose-invert prose-lg max-w-none prose-headings:text-sky-400 prose-headings:scroll-mt-20 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-img:rounded-xl prose-img:border prose-img:border-slate-700/50">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4 flex items-center gap-3">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4 flex items-center gap-3">
         {project.data.title}
         {project.data.highlight && (
             <span class="text-yellow-400" title="Featured Project">
@@ -103,9 +103,19 @@ const sortedRelated = sortedRelatedPromise;
         )}
         </h1>
         
-        <div class="flex flex-wrap gap-2 mb-8 not-prose">
+        <div class="flex items-center flex-wrap gap-2 not-prose text-sm">
+            Tech Stack:
+        {project.data.stack.map(tag => (
+            <span class="font-mono py-1 px-3 rounded-full bg-slate-800 border border-teal-500/20 !text-teal-500">
+            {tag}
+            </span>
+        ))}
+        </div>
+
+        <div class="flex items-center flex-wrap gap-2 mt-2 mb-6 not-prose text-xs">
+            Tags:
         {project.data.tags.map(tag => (
-            <span class="text-sm font-mono py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sky-300">
+            <span class="font-mono py-1 px-3 rounded-full bg-slate-800 border border-slate-700 text-sky-300">
             {tag}
             </span>
         ))}

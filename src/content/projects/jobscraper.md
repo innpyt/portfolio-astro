@@ -4,6 +4,7 @@ tags: ['Python', 'Pet']
 image: '/images/jobscraper/home.png'
 weight: 3
 highlight: true
+stack: ['Python', 'Playwright', 'Pandas', 'Gspread']
 ---
 
 <a href="/images/jobscraper/home.png" class="glightbox">
@@ -17,8 +18,6 @@ Default search/filters on LinkedIn/Glassdoor suck.
 You always get some **unrelevant results** like 'DevOps Engineer' for 'Frontend Developer' search, need to use **multiple listings** like 'Fullstack Developer' vs 'Fullstack Engineer' manually checking **duplicates**, **cant filter** out unwanted companies or terms.
 
 See **[JobData](/portfolio/projects/jobdata)** for some job data analysis based on the scraped data.
-
-**Tech Stack**: Python, ~~Selenium Webdriver~~ Playwright, Pandas, Gspread
 
 ## Highlights
 

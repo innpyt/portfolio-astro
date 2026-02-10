@@ -3,13 +3,12 @@ title: 'ReactFood'
 tags: ['React', 'Pet']
 image: '/images/food/home.png'
 weight: 0
+stack: ['React 16', 'Javascript']
 ---
 
 <img src="/images/food/home.png"/>
 
 **Project description:** React learn project from 2020
-
-**Tech Stack**: React 16, Javascript
 
 ## Highlights
 
