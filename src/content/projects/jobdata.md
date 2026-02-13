@@ -3,6 +3,7 @@ title: 'JobData'
 tags: ['Python', 'Pet']
 image: '/images/jobdata/output_15_0.png'
 weight: 2
+stack: ['Python', 'Pandas', 'Matplotlib', 'Seaborn']
 ---
 
 <a href="/images/jobdata/output_15_0.png" class="glightbox">
@@ -11,15 +12,6 @@ weight: 2
 
 **Project description:** Personal python data analytics notebook from October 2025.<br>
 **Dataset**: 3000 jobs scraped with **[JobScraper](/portfolio/projects/jobscraper)** within July-October 2025
-
-**Tech Stack**: Python, Pandas, Matplotlib, Seaborn
-
-> - [Job Titles](#job-titles)
-> - [by name](#1-by-name-developer-vs-engineer-vs-entwickler)
-> - [by technology](#2-by-technology)
-> - [Source Performance and Redundancy](#source-performance-and-redundancy)
-> - [Custom Filter Efficacy](#custom-filter-efficacy)
-> - [Salary](#salary)
 
 ## Analysis of ~3,000 Jobs from LinkedIn and Glassdoor (Last 3 Months)
 

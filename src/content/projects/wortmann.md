@@ -21,6 +21,7 @@ highlight: true
 
 ## Accomplishments
 
+- contributed to Order Matrix
 - integrated Barcode Scanner into digital sales room PWA
 
 ## Gallery

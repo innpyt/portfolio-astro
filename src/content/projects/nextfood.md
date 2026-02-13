@@ -3,13 +3,12 @@ title: 'NextFood'
 tags: ['React', 'Pet']
 image: '/images/nextfood/home.png'
 weight: 1
+stack: ['React', 'Next', 'SSR', 'Javascript', 'SQlite db']
 ---
 
 <img src="/images/nextfood/home.png"/>
 
 **Project description:** Fullstack React learn project from 2024
-
-**Tech Stack**: React 19, Next, SSR, Javascript, SQlite db
 
 ## Highlights
 

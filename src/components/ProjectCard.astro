@@ -11,7 +11,7 @@ const { project } = Astro.props;
 
 <a 
   href={`/projects/${project.slug}`} 
-  class={`project-card group relative overflow-hidden rounded-xl bg-slate-800 block transition-all duration-300 border-1 hover:shadow-cyan-500/20 hover:shadow-lg ${project.data.highlight ? 'border-yellow-400 bg-yellow-400/10' : 'border-transparent'}`}
+  class={`project-card group relative overflow-hidden rounded-xl bg-slate-800 block transition-all duration-300 border-1 hover:shadow-cyan-500/20 hover:shadow-lg ${project.data.highlight ? 'border-yellow-400 bg-yellow-400/10' : 'border-transparent'} ${project.data.old ? 'opacity-50 pointer-events-none grayscale-50 !border-gray-600' : ''}`}
   data-tags={JSON.stringify(project.data.tags)}
   data-weight={project.data.weight || 0}
   data-highlight={project.data.highlight ? 'true' : 'false'}

@@ -2,7 +2,8 @@
 title: 'Eterna'
 tags: ['Vue']
 image: '/images/eterna/home.png'
-weight: 1
+weight: 6
+stack: ['Shopware 6', 'Vue', 'Microfrontends', 'Twig', 'Javascript']
 ---
 
 <a href="/images/eterna/home.png" class="glightbox">

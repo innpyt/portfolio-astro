@@ -1,0 +1,21 @@
+---
+title: 'Poggenpohl'
+tags: ['Vue']
+image: '/images/poggenpohl/poggenpohl_home.jpg'
+weight: 0
+stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
+old: true
+---
+
+PS: You were not supposed to see this old project page, but it seems you were very curious, so here it is 😉
+
+<a href="/images/poggenpohl/poggenpohl_home.jpg" class="glightbox">
+<img src="/images/poggenpohl/poggenpohl_home.jpg"/>
+</a>
+
+**Description:** Founded in 1892, the world’s oldest kitchen brand and the inventor of the "fitted kitchen". Ranked consistently among Germany's top Top 50 Luxury Brands alongside Porsche and Leica.
+
+## Accomplishments
+
+- Curated and executed Shop relaunch, build reusable frontend components and storytelling blocks.
+- Facilitated seamless deployments and version control management within a multi-developer environment.

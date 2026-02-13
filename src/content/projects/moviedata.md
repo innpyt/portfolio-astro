@@ -3,14 +3,13 @@ title: 'MovieData'
 tags: ['Python', 'Pet']
 image: '/images/moviedata/output_31_0.png'
 weight: 0
+stack: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Sklearn']
 ---
 
 <a href="/images/moviedata/output_31_0.png" class="glightbox">
 <img src="/images/moviedata/output_31_0.png"/>
 </a>
 **Project description:** Personal python data analytics notebook from August 2025
-
-**Tech Stack**: Python, Pandas, Matplotlib, Seaborn, Sklearn
 
 ## Introduction
 

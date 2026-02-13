@@ -3,13 +3,12 @@ title: 'Events'
 tags: ['React', 'Pet']
 image: '/images/events/home.png'
 weight: 0
+stack: ['React 16', 'React Router', 'Javascript']
 ---
 
 <img src="/images/events/home.png"/>
 
 **Project description:** React learn project from 2020
-
-**Tech Stack**: React 16, React Router, Javascript
 
 ## Highlights
 

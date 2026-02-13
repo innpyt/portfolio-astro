@@ -1,0 +1,22 @@
+---
+title: 'Baby Walz'
+tags: ['Vue']
+image: '/images/babywalz/babywalz_home.jpg'
+weight: 10
+stack:
+    ['Vue 3', 'Nuxt', 'Typescript', 'Storyblok', 'Headless', 'SSR', 'Tailwind']
+highlight: true
+---
+
+<a href="/images/babywalz/babywalz_home.jpg" class="glightbox">
+<img src="/images/babywalz/babywalz_home.jpg"/>
+</a>
+
+**Description:** A traditional market leader since 1952, now a digital-first powerhouse in the baby and mother-care sector. Manages a massive omnichannel network across Germany, Austria, and Switzerland with over €300 million in annual revenue. Is part of Versandhaus Walz GmbH, which also operates the brands "Die moderne Hausfrau" and "walzvital". Concentrated in Bad Waldsee, where on good days, more than 20,000 packages are packed in the company's own logistics center by over 1,000 employees.
+
+## Accomplishments
+
+- **Infrastructure:** Identified architectural degradation in CI/CD pipelines, which should save about 3-12 minutes on each job and result in significantly higher build speed and reliability
+- **Architecture:** Identified architectural inefficiencies in a 5-repo structure and pushed a transition to a unified **Turborepo** setup, potentially cutting CI/CD overhead by another 60%, streamlining cross-project development and drastically improving developer experience
+- **Performance:** Investigated and fixed performance-killing listing issues, including memory-leak and unoptimal rerendering and listing refetching, which dramatically improved user experience and lowered server load.
+- **Architecture:** various improvements in overall project structure, ts, component library, etc.

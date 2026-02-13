@@ -2,7 +2,7 @@
 title: 'Fishersports'
 tags: ['Vue']
 image: '/images/fishersports/home.png'
-weight: 0
+weight: 8
 stack: ['Vue 3', 'Nuxt', 'Typescript', 'Headless', 'SSR', 'Tailwind']
 ---
 
