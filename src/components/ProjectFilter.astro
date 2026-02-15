@@ -27,12 +27,11 @@ import { Icon } from 'astro-icon/components';
   function setupFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = Array.from(document.querySelectorAll('.project-card'));
-    const grid = document.querySelector('#projects-grid'); // Specific Container
+    const grid = document.querySelector('#projects-grid');
     
     // Store initial order
     cards.forEach((card, index) => {
-             // @ts-ignore
-            card.dataset.initialOrder = index;
+      card.dataset.initialOrder = index;
     });
 
     const descriptions = {
@@ -56,11 +55,9 @@ import { Icon } from 'astro-icon/components';
         btn.classList.remove('text-slate-400');
 
         const filter = btn.getAttribute('data-filter');
-        // @ts-ignore
         if (descContainer) {
             descContainer.style.opacity = '0';
             setTimeout(() => {
-                // @ts-ignore
                 descContainer.textContent = descriptions[filter] || '';
                 descContainer.style.opacity = '1';
             }, 150);
@@ -71,47 +68,37 @@ import { Icon } from 'astro-icon/components';
         if (filter === 'all') {
             // Restore initial order
              sortedCards.sort((a, b) => {
-                // @ts-ignore
                 return a.dataset.initialOrder - b.dataset.initialOrder;
             });
         } else {
             // Sort by Highlight -> Weight -> Title
             sortedCards.sort((a, b) => {
-                // @ts-ignore
                 const highlightA = a.dataset.highlight === 'true';
-                // @ts-ignore
                 const highlightB = b.dataset.highlight === 'true';
                 if (highlightA && !highlightB) return -1;
                 if (!highlightA && highlightB) return 1;
 
-                // @ts-ignore
                 const weightA = parseInt(a.dataset.weight || '0');
-                // @ts-ignore
                 const weightB = parseInt(b.dataset.weight || '0');
                 if (weightA !== weightB) return weightB - weightA;
 
-                // @ts-ignore
                 return a.dataset.title.localeCompare(b.dataset.title);
             });
         }
 
         // Re-append in new order and toggle visibility
         sortedCards.forEach(card => {
-            // @ts-ignore
           const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
           
           if (filter === 'all' || tags.includes(filter)) {
-            // @ts-ignore
             card.style.display = 'block';
             card.animate([
               { opacity: 0, transform: 'scale(0.95)' },
               { opacity: 1, transform: 'scale(1)' }
             ], { duration: 300, easing: 'ease-out' });
           } else {
-            // @ts-ignore
             card.style.display = 'none';
           }
-          // @ts-ignore
           grid && grid.appendChild(card);
         });
       });

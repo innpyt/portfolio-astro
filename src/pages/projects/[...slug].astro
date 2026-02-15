@@ -8,8 +8,6 @@ import { sortProjectsSidebar } from '../../utils/projectSort';
 import Badge from '../../components/Badge.astro';
 import Back from '../../components/Back.astro';
 
-// ... (existing code)
-
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
   return projects.map(project => ({
@@ -19,23 +17,16 @@ export async function getStaticPaths() {
 }
 
 const { project } = Astro.props;
-const { Content, headings: allHeadings } = await project.render(); // Rename to allHeadings
-const headings = allHeadings.filter(h => h.depth === 2); // Filter for h2 only
+const { Content, headings: allHeadings } = await project.render();
+const headings = allHeadings.filter(h => h.depth === 2);
 
-// Logic for "Other Projects"
+// Find related tags (intersecting tags)
 const allProjects = await getCollection('projects');
-
-// Find related tags (intersecting tags)
-// Find related tags (intersecting tags)
-const currentTag = project.data.tags[0]; // Primary tag
-const relatedProjects = allProjects.filter(p => {
-    // Check if primary tag matches
-    return p.data.tags.includes(currentTag) && !p.data.old;
-});
+const currentTag = project.data.tags[0];
+const relatedProjects = allProjects.filter(p => p.data.tags.includes(currentTag) && !p.data.old);
 
 // Sort using shared logic
 const sortedRelatedPromise = sortProjectsSidebar(relatedProjects);
-// Only take top N? Or all? User said "list of other projects", imply all.
 const sortedRelated = sortedRelatedPromise;
 
 ---
@@ -128,7 +119,6 @@ const sortedRelated = sortedRelatedPromise;
 </Layout>
 
 <script>
-    // Link adjustment for lightbox
     document.addEventListener('astro:page-load', () => {
         const images = document.querySelectorAll('.project-content img');
         images.forEach(img => {
@@ -136,7 +126,6 @@ const sortedRelated = sortedRelatedPromise;
                 const wrapper = document.createElement('a');
                 wrapper.href = img.getAttribute('src') || '';
                 wrapper.className = 'glightbox';
-                // @ts-ignore
                 wrapper.dataset.gallery = 'project-gallery';
                 img.parentNode?.insertBefore(wrapper, img);
                 wrapper.appendChild(img);

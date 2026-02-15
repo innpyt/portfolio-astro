@@ -11,7 +11,7 @@ const getCategoryPriority = (tags: string[]) => {
   if (tags.includes('Vue')) return 1;
   if (tags.includes('React')) return 2;
   if (tags.includes('Python')) return 3;
-  return 4; // Others
+  return 4;
 };
 
 export function sortProjectsHome(projects: CollectionEntry<'projects'>[]) {
