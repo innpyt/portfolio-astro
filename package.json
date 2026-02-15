@@ -13,6 +13,7 @@
     "@astrojs/vue": "^5.1.4",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.15",
+    "astro-icon": "^1.1.5",
     "glightbox": "^3.3.1",
     "tailwindcss": "^4.1.18",
     "vue": "^3.5.27"
