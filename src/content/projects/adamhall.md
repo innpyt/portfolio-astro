@@ -4,7 +4,7 @@ tags: ['Vue']
 image: '/images/adamhall/home.png'
 weight: 5
 highlight: true
-stack: ['Vue 3', 'Nuxt', 'Typescript', 'Headless', 'SSR', 'Tailwind']
+stack: ['Vue 3', 'Nuxt', 'Typescript', 'Pinia', 'Headless', 'SSR', 'Tailwind']
 ---
 
 <a href="/images/adamhall/home.png" class="glightbox">

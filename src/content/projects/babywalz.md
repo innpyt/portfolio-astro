@@ -4,7 +4,7 @@ tags: ['Vue']
 image: '/images/babywalz/babywalz_home.jpg'
 weight: 10
 stack:
-    ['Vue 3', 'Nuxt', 'Typescript', 'Storyblok', 'Headless', 'SSR', 'Tailwind']
+    ['Vue 3', 'Nuxt', 'Typescript', 'Pinia', 'Storyblok', 'Headless', 'SSR', 'Tailwind']
 highlight: true
 ---
 
