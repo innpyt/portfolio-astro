@@ -4,6 +4,8 @@ import Sidebar from '../components/Sidebar.astro';
 import '../styles/global.css';
 import 'glightbox/dist/css/glightbox.min.css';
 
+import { ClientRouter } from 'astro:transitions';
+
 interface Props {
 	title?: string;
 }
@@ -25,6 +27,7 @@ const { title = "Portfolio | Alexander Schmidt | Lead Frontend Engineer" } = Ast
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+        <ClientRouter />
 	</head>
 	<body class="bg-slate-900 text-slate-200 min-h-screen">
         <style>
@@ -45,7 +48,7 @@ const { title = "Portfolio | Alexander Schmidt | Lead Frontend Engineer" } = Ast
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                 <!-- Left Sidebar -->
-                <div class="md:col-span-3 lg:col-span-4">
+                <div class="md:col-span-4">
                     <div class="md:sticky md:top-12">
                         <slot name="sidebar">
                             <Sidebar />
@@ -54,7 +57,7 @@ const { title = "Portfolio | Alexander Schmidt | Lead Frontend Engineer" } = Ast
                 </div>
 
                 <!-- Right Content -->
-                <main class="md:col-span-9 lg:col-span-8">
+                <main class="md:col-span-8">
                     <slot />
                 </main>
             </div>

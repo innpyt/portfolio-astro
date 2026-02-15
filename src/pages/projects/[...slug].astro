@@ -43,7 +43,7 @@ const sortedRelated = sortedRelatedPromise;
 <Layout title={`${project.data.title} | Alex Schmidt`}>
   
   <div slot="sidebar" class="space-y-8">
-    <Back>
+    <Back />
 
     {headings.length > 0 && (
         <div class="bg-slate-800/30 p-6 rounded-xl border border-slate-700/50 backdrop-blur-sm min-h-[200px]">
@@ -89,7 +89,7 @@ const sortedRelated = sortedRelatedPromise;
       )}
   </div>
 
-  <div class="max-w-4xl pt-15">
+  <div class="max-w-4xl pt-15" transition:animate="slide">
     <article class="prose prose-invert prose-lg max-w-none prose-headings:text-sky-400 prose-headings:scroll-mt-20 prose-a:text-sky-400 hover:prose-a:text-sky-300 prose-img:rounded-xl prose-img:border prose-img:border-slate-700/50">
         <h1 class="text-4xl md:text-6xl font-bold mb-4 flex items-center gap-3">
             {project.data.title}

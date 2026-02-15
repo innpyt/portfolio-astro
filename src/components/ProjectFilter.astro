@@ -2,7 +2,7 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="project-filters flex flex-wrap gap-4 justify-center my-8">
+<div class="project-filters flex flex-wrap gap-4 justify-center my-8" transition:persist>
   <button class="filter-btn active px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-sky-400 hover:bg-sky-500/10 hover:border-sky-400 transition-all text-sm font-semibold uppercase tracking-wider" data-filter="all">
     All
   </button>
@@ -31,8 +31,8 @@ import { Icon } from 'astro-icon/components';
     
     // Store initial order
     cards.forEach((card, index) => {
-        // @ts-ignore
-        card.dataset.initialOrder = index;
+             // @ts-ignore
+            card.dataset.initialOrder = index;
     });
 
     const descriptions = {
@@ -115,7 +115,7 @@ import { Icon } from 'astro-icon/components';
           grid && grid.appendChild(card);
         });
       });
-    });
+        });
   }
 
   // Run on load and after Astro View Transitions
