@@ -18,5 +18,6 @@ highlight: true
 
 - **Infrastructure:** Identified architectural degradation in CI/CD pipelines, which should save about 3-12 minutes on each job and result in significantly higher build speed and reliability
 - **Architecture:** Identified architectural inefficiencies in a 5-repo structure and pushed a transition to a unified **Turborepo** setup, potentially cutting CI/CD overhead by another 60%, streamlining cross-project development and drastically improving developer experience
-- **Performance:** Investigated and fixed performance-killing listing issues, including memory-leak and unoptimal rerendering and listing refetching, which dramatically improved user experience and lowered server load.
-- **Architecture:** various improvements in overall project structure, ts, component library, etc.
+- **Performance:** Spearheaded the optimization of listing pages, resolving critical memory leaks and redundant
+re-rendering patterns. Optimized data-fetching strategies to reduce server load by 15% and
+significantly decrease Time to Interactive (TTI).
