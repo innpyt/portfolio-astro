@@ -1,0 +1,20 @@
+---
+const HOBBIES = [
+    { name: 'Surfing', icon: '🏄' },
+    { name: 'Skiing', icon: '⛷️' },
+    { name: 'Karaoke', icon: '🎤' },
+    { name: 'Hookah', icon: '🌋' },
+];
+---
+
+<div class="hobbies-section pt-6 border-t border-slate-700/50 flex flex-col items-center">
+    <h3 class="text-sm font-semibold text-slate-500 tracking-wider mb-4">Hobbies</h3>
+    <ul class="space-y-2 text-slate-300">
+        {HOBBIES.map(hobby => (
+            <li class="flex items-center gap-2">
+                <span>{hobby.name}</span>
+                <span set:html={hobby.icon} />
+            </li>
+        ))}
+    </ul>
+</div>

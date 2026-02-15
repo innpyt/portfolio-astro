@@ -1,61 +1,9 @@
-
 ---
-import { Icon } from 'astro-icon/components';
-
-const HOBBIES = [
-    { name: 'Surfing', icon: '🏄' },
-    { name: 'Skiing', icon: '⛷️' },
-    { name: 'Karaoke', icon: '🎤' },
-    { name: 'Hookah', icon: '🌋' },
-];
+import About from './About.astro';
+import Hobbies from './Hobbies.astro';
 ---
 
 <aside class="sidebar text-center space-y-6">
-    <div class="profile-section space-y-4 flex flex-col items-center">
-        <div class="mt-40">
-            <h1 class="text-4xl font-bold text-slate-100">
-                Alexander Schmidt
-            </h1>
-            <h2 class="!text-sky-500 font-medium text-lg mt-1">
-                Senior Fullstack Engineer
-            </h2>
-            <p class="text-sky-500 font-medium text-base !m-0">
-                (frontend focused)
-            </p>
-            <p class="!text-teal-500 font-medium text-base mt-2">
-                Typescript | Vue & Nuxt | Python
-            </p>
-            </div>
-            <div class="relative w-62 h-62 overflow-hidden rounded-full border-0 border-slate-700 shadow-xl">
-             <img src="/alex.jpeg" alt="Alex Schmidt" class="w-full h-full object-cover" />
-            </div>
-            <div>
-            <div class="flex justify-center gap-4">
-                <a href="https://linkedin.com/in/alsmdt/" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="LinkedIn">
-                    <Icon name="square-linkedin" class="w-6 h-6" />
-                </a>
-                <a href="https://github.com/innpyt/" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="GitHub">
-                    <Icon name="github" class="w-6 h-6" />
-                </a>
-            </div>
-            <h2 class="mt-6">About me</h2>
-            <p class="text-slate-400 text-sm mt-2 max-w-xs mx-auto">
-                9 years of engineering excellence in the european Enterprise E-commerce sector. From architecting frontends for luxury retailers to building B2B PWAs and Automation tools, I focus on project and feature ownership. I don't just write code, I optimize workflows, refine CI/CD pipelines, and ensure that every technical decision improves either the developer or user experience.
-            </p>
-        </div>
-
-        
-    </div>
-
-    <div class="hobbies-section pt-6 border-t border-slate-700/50 flex flex-col items-center">
-        <h3 class="text-sm font-semibold text-slate-500 tracking-wider mb-4">Hobbies</h3>
-        <ul class="space-y-2 text-slate-300">
-            {HOBBIES.map(hobby => (
-                <li class="flex items-center gap-2">
-                    <span>{hobby.name}</span>
-                    <span set:html={hobby.icon} />
-                </li>
-            ))}
-        </ul>
-    </div>
+    <About />
+    <Hobbies />
 </aside>
