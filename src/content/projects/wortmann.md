@@ -2,9 +2,9 @@
 title: 'Wortmann'
 tags: ['Vue']
 image: '/images/wortmann/home.png'
-weight: 2
+weight: 9
 stack: ['Shopware 6', 'PWA', 'Vue', 'Twig', 'Typescript', 'Javascript']
-highlight: true
+highlight: false
 ---
 
 <a href="/images/wortmann/home.png" class="glightbox">
