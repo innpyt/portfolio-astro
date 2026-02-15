@@ -23,8 +23,8 @@ const projects = sortProjectsHome(allProjects);
         <ProjectFilter />
 
         <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-          {projects.map(project => (
-            <ProjectCard project={project} />
+          {projects.map((project, index) => (
+            <ProjectCard project={project} priority={index < 6} />
           ))}
         </div>
     </div>

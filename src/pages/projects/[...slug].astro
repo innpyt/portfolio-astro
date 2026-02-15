@@ -30,7 +30,7 @@ const allProjects = await getCollection('projects');
 const currentTag = project.data.tags[0]; // Primary tag
 const relatedProjects = allProjects.filter(p => {
     // Check if primary tag matches
-    return p.data.tags.includes(currentTag);
+    return p.data.tags.includes(currentTag) && !p.data.old;
 });
 
 // Sort using shared logic

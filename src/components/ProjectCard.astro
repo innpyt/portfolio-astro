@@ -7,9 +7,10 @@ import Badge from '../components/Badge.astro';
 
 interface Props {
   project: CollectionEntry<'projects'>;
+  priority?: boolean;
 }
 
-const { project } = Astro.props;
+const { project, priority = false } = Astro.props;
 ---
 
 <a 
@@ -25,8 +26,11 @@ const { project } = Astro.props;
       <img 
         src={project.data.image} 
         alt={project.data.title} 
+        width="640"
+        height="360"
         class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-        loading="lazy"
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
       />
     ) : (
       <div class="flex h-full items-center justify-center text-slate-500">
