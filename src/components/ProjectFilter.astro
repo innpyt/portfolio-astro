@@ -3,18 +3,18 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <div class="project-filters flex flex-wrap gap-4 justify-center my-8" transition:persist>
-  <button class="filter-btn active px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-sky-400 hover:bg-sky-500/10 hover:border-sky-400 transition-all text-sm font-semibold uppercase tracking-wider" data-filter="all">
+  <button class="filter-btn active px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-sky-400 hover:bg-sky-500/10 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="all">
     All
   </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-all text-sm font-semibold uppercase tracking-wider" data-filter="Vue">
+  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-yellow-400/50 text-yellow-400 bg-slate-800/50 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="Vue">
     <Icon name="vue" class="w-6 h-6" />
     Vue
   </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-all text-sm font-semibold uppercase tracking-wider" data-filter="React">
+  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="React">
     <Icon name="react" class="w-6 h-6" />
     React
   </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-all text-sm font-semibold uppercase tracking-wider" data-filter="Python">
+  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="Python">
     <Icon name="python" class="w-6 h-6" />
     Python
   </button>
@@ -27,10 +27,11 @@ import { Icon } from 'astro-icon/components';
   // @ts-nocheck
   
   function setupFilters() {
-    const buttons = document.querySelectorAll('.filter-btn');
+    // Initial query
+    let buttons = Array.from(document.querySelectorAll('.filter-btn'));
     const cards = Array.from(document.querySelectorAll('.project-card'));
     const grid = document.querySelector('#projects-grid');
-    const descContainer = document.getElementById('filter-description');
+    const descContainer = document.querySelector('#filter-description');
     
     // Store initial order
     cards.forEach((card, index) => {
@@ -43,6 +44,21 @@ import { Icon } from 'astro-icon/components';
         'React': 'Advanced explorations of the modern React 16-19 ecosystem: Next.js, Tanstack, React Query, Server Components, Redux/Zustand and performance optimization.',
         'Python': 'Automation and Data science utilities leveraging FastAPI, Flask and PyData stack (Pandas, Request, NumPy, Scikit Learn, Plotly, Seaborn and Matplotlib)'
     };
+
+    function updateActiveButtonStyles(filter) {
+        // Re-query to ensure we have the latest DOM elements if they were swapped
+        const currentButtons = document.querySelectorAll('.filter-btn');
+        currentButtons.forEach(b => {
+             const bFilter = b.getAttribute('data-filter');
+             if (bFilter === filter) {
+                 b.classList.add('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
+                 b.classList.remove('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
+             } else {
+                 b.classList.remove('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
+                 b.classList.add('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
+             }
+        });
+    }
 
     function applyFilter(filter, animate = true) {
         // 1. Snapshot Positions (only if animating)
@@ -108,6 +124,8 @@ import { Icon } from 'astro-icon/components';
             if (descContainer) {
                 descContainer.textContent = descriptions[filter] || '';
             }
+            // Update Buttons
+            updateActiveButtonStyles(filter);
             return;
         }
 
@@ -126,7 +144,7 @@ import { Icon } from 'astro-icon/components';
                 c.style.pointerEvents = 'none';
                 
                 requestAnimationFrame(() => {
-                    c.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+                    c.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
                     c.style.opacity = '0';
                     c.style.transform = 'scale(0.9)';
                 });
@@ -173,14 +191,14 @@ import { Icon } from 'astro-icon/components';
         requestAnimationFrame(() => {
              requestAnimationFrame(() => {
                 visibleCards.forEach(c => {
-                    c.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.2, 1)';
+                    c.style.transition = 'opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.2, 0, 0.2, 1)';
                     c.style.opacity = '1';
                     c.style.transform = '';
                 });
              });
         });
 
-        // Update Description
+        // Update Description & Buttons UI
         if (descContainer) {
              const currentDesc = descContainer.textContent;
              const newDesc = descriptions[filter] || '';
@@ -192,47 +210,76 @@ import { Icon } from 'astro-icon/components';
                 }, 150);
              }
         }
+        
+        updateActiveButtonStyles(filter);
     }
 
     // Initialize State
     const urlParams = new URLSearchParams(window.location.search);
-    const initialFilter = urlParams.get('filter') || 'all';
+    const storedFilter = sessionStorage.getItem('projectFilter');
+    let initialFilter = urlParams.get('filter');
 
-    // Set active button
-    buttons.forEach(btn => {
-        const btnFilter = btn.getAttribute('data-filter');
-        if (btnFilter === initialFilter) {
-             btn.classList.add('active', 'text-sky-400', 'border-sky-400');
-             btn.classList.remove('text-slate-400');
+    // Restoration Logic
+    if (!initialFilter && storedFilter) {
+        initialFilter = storedFilter;
+        // Update URL to match stored filter
+        const newUrl = new URL(window.location);
+        if (initialFilter !== 'all') {
+            newUrl.searchParams.set('filter', initialFilter);
         } else {
-             btn.classList.remove('active', 'text-sky-400', 'border-sky-400');
-             btn.classList.add('text-slate-400');
+            newUrl.searchParams.delete('filter');
         }
-        
-        // Add click listener
-        btn.addEventListener('click', () => {
-             const filter = btn.getAttribute('data-filter') || 'all';
-             
-             // Update URL
-             const newUrl = new URL(window.location);
-             if (filter === 'all') newUrl.searchParams.delete('filter');
-             else newUrl.searchParams.set('filter', filter);
-             history.replaceState(null, '', newUrl);
-
-             // Update Buttons
-             buttons.forEach(b => {
-                b.classList.remove('active', 'text-sky-400', 'border-sky-400');
-                b.classList.add('text-slate-400');
-            });
-            btn.classList.add('active', 'text-sky-400', 'border-sky-400');
-            btn.classList.remove('text-slate-400');
-
-            applyFilter(filter, true);
-        });
-    });
+        history.replaceState(null, '', newUrl);
+    }
+    
+    initialFilter = initialFilter || 'all';
 
     // Apply initial filter (no animation)
     applyFilter(initialFilter, false);
+
+    // Event Delegation for Buttons (Better than cloning)
+    const filterContainer = document.querySelector('.project-filters');
+    if (filterContainer) {
+        // Clone container to remove old listeners if any (simple way to clear)
+        const newContainer = filterContainer.cloneNode(true);
+        filterContainer.parentNode.replaceChild(newContainer, filterContainer);
+        
+        newContainer.addEventListener('click', (e) => {
+            const btn = e.target.closest('.filter-btn');
+            if (!btn) return;
+            
+            const filter = btn.getAttribute('data-filter') || 'all';
+             
+             // Update Storage
+             sessionStorage.setItem('projectFilter', filter);
+             
+             // Update URL (Push State for history)
+             const newUrl = new URL(window.location);
+             if (filter === 'all') newUrl.searchParams.delete('filter');
+             else newUrl.searchParams.set('filter', filter);
+             
+             const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
+             if (currentParam !== filter) {
+                 history.pushState(null, '', newUrl);
+             }
+
+             applyFilter(filter, true);
+        });
+    }
+    
+    // History Listener (Back/Forward)
+    const handlePopState = () => {
+        const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
+        sessionStorage.setItem('projectFilter', currentParam);
+        applyFilter(currentParam, true);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    
+    // Cleanup listener when navigating away/swapping
+    document.addEventListener('astro:before-swap', () => {
+        window.removeEventListener('popstate', handlePopState);
+    }, { once: true });
   }
 
   // Run on load and after Astro View Transitions
@@ -241,7 +288,12 @@ import { Icon } from 'astro-icon/components';
 </script>
 
 <style>
+    .filter-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
     .filter-btn.active {
-        box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        transform: translateY(-1px) scale(1.05);
+        background-color: rgba(14, 165, 233, 0.2);
     }
 </style>
