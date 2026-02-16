@@ -24,10 +24,13 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <script>
+  // @ts-nocheck
+  
   function setupFilters() {
     const buttons = document.querySelectorAll('.filter-btn');
     const cards = Array.from(document.querySelectorAll('.project-card'));
     const grid = document.querySelector('#projects-grid');
+    const descContainer = document.getElementById('filter-description');
     
     // Store initial order
     cards.forEach((card, index) => {
@@ -41,38 +44,23 @@ import { Icon } from 'astro-icon/components';
         'Python': 'Automation and Data science utilities leveraging FastAPI, Flask and PyData stack (Pandas, Request, NumPy, Scikit Learn, Plotly, Seaborn and Matplotlib)'
     };
 
-    const descContainer = document.getElementById('filter-description');
-    if (descContainer) descContainer.textContent = descriptions['all'];
-
-    buttons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        // Toggle active class
-        buttons.forEach(b => {
-            b.classList.remove('active', 'text-sky-400', 'border-sky-400');
-            b.classList.add('text-slate-400');
-        });
-        btn.classList.add('active', 'text-sky-400', 'border-sky-400');
-        btn.classList.remove('text-slate-400');
-
-        const filter = btn.getAttribute('data-filter');
-        if (descContainer) {
-            descContainer.style.opacity = '0';
-            setTimeout(() => {
-                descContainer.textContent = descriptions[filter] || '';
-                descContainer.style.opacity = '1';
-            }, 150);
+    function applyFilter(filter, animate = true) {
+        // 1. Snapshot Positions (only if animating)
+        const firstPositions = new Map();
+        if (animate) {
+            cards.forEach(c => {
+                if (c.style.display !== 'none') {
+                    firstPositions.set(c, c.getBoundingClientRect());
+                }
+            });
         }
 
-        // Sorting Logic
+        // 2. Sort Logic
         let sortedCards = [...cards];
         if (filter === 'all') {
-            // Restore initial order
-             sortedCards.sort((a, b) => {
-                return a.dataset.initialOrder - b.dataset.initialOrder;
-            });
+             sortedCards.sort((a, b) => a.dataset.initialOrder - b.dataset.initialOrder);
         } else {
-            // Sort by Highlight -> Weight -> Title
-            sortedCards.sort((a, b) => {
+             sortedCards.sort((a, b) => {
                 const highlightA = a.dataset.highlight === 'true';
                 const highlightB = b.dataset.highlight === 'true';
                 if (highlightA && !highlightB) return -1;
@@ -86,28 +74,170 @@ import { Icon } from 'astro-icon/components';
             });
         }
 
-        // Re-append in new order and toggle visibility
+        const visibleCards = [];
+        
+        // 3. Update DOM
         sortedCards.forEach(card => {
-          const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
-          
-          if (filter === 'all' || tags.includes(filter)) {
-            card.style.display = 'block';
-            card.animate([
-              { opacity: 0, transform: 'scale(0.95)' },
-              { opacity: 1, transform: 'scale(1)' }
-            ], { duration: 300, easing: 'ease-out' });
-          } else {
-            card.style.display = 'none';
-          }
-          grid && grid.appendChild(card);
+             const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
+             const isMatch = filter === 'all' || tags.includes(filter);
+
+             if (isMatch) {
+                 if (card.style.display === 'none') {
+                     card.dataset.status = 'entering';
+                 } else {
+                     card.dataset.status = 'staying';
+                 }
+                 card.style.display = 'block';
+                 grid.appendChild(card);
+                 visibleCards.push(card);
+             } else {
+                 if (card.style.display !== 'none') {
+                     card.dataset.status = 'leaving';
+                 } else {
+                     card.dataset.status = 'hidden';
+                 }
+             }
         });
-      });
+
+        if (!animate) {
+            // Just hide non-matching
+            cards.forEach(c => {
+                if (!visibleCards.includes(c)) c.style.display = 'none';
+            });
+            // Update Description
+            if (descContainer) {
+                descContainer.textContent = descriptions[filter] || '';
+            }
+            return;
+        }
+
+        // 4. Animate Leaving
+        cards.filter(c => c.dataset.status === 'leaving').forEach(c => {
+            const rect = firstPositions.get(c);
+            if (rect) {
+                c.style.position = 'fixed';
+                c.style.top = rect.top + 'px';
+                c.style.left = rect.left + 'px';
+                c.style.width = rect.width + 'px';
+                c.style.height = rect.height + 'px';
+                c.style.boxSizing = 'border-box';
+                c.style.margin = '0';
+                c.style.zIndex = '0';
+                c.style.pointerEvents = 'none';
+                
+                requestAnimationFrame(() => {
+                    c.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
+                    c.style.opacity = '0';
+                    c.style.transform = 'scale(0.9)';
+                });
+                
+                setTimeout(() => {
+                    c.style.display = 'none';
+                    c.style.position = '';
+                    c.style.opacity = '';
+                    c.style.transform = '';
+                    c.style.zIndex = '';
+                    c.style.margin = '';
+                    c.style.pointerEvents = '';
+                    c.style.width = '';
+                    c.style.height = '';
+                    c.style.top = '';
+                    c.style.left = '';
+                }, 400);
+            } else {
+                c.style.display = 'none';
+            }
         });
+
+        // 5. Animate Staying & Entering
+        visibleCards.forEach(c => {
+            c.style.transition = 'none';
+            
+            if (c.dataset.status === 'staying') {
+                 const oldRect = firstPositions.get(c);
+                 const newRect = c.getBoundingClientRect();
+                 if (oldRect) {
+                     const dx = oldRect.left - newRect.left;
+                     const dy = oldRect.top - newRect.top;
+                     if (dx !== 0 || dy !== 0) {
+                         c.style.transform = `translate(${dx}px, ${dy}px)`;
+                     }
+                 }
+            } else if (c.dataset.status === 'entering') {
+                c.style.opacity = '0';
+                c.style.transform = 'scale(0.9)';
+            }
+        });
+
+        // Play
+        requestAnimationFrame(() => {
+             requestAnimationFrame(() => {
+                visibleCards.forEach(c => {
+                    c.style.transition = 'opacity 0.3s ease-out, transform 0.3s cubic-bezier(0.2, 0, 0.2, 1)';
+                    c.style.opacity = '1';
+                    c.style.transform = '';
+                });
+             });
+        });
+
+        // Update Description
+        if (descContainer) {
+             const currentDesc = descContainer.textContent;
+             const newDesc = descriptions[filter] || '';
+             if (currentDesc !== newDesc) {
+                descContainer.style.opacity = '0';
+                setTimeout(() => {
+                    descContainer.textContent = newDesc;
+                    descContainer.style.opacity = '1';
+                }, 150);
+             }
+        }
+    }
+
+    // Initialize State
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialFilter = urlParams.get('filter') || 'all';
+
+    // Set active button
+    buttons.forEach(btn => {
+        const btnFilter = btn.getAttribute('data-filter');
+        if (btnFilter === initialFilter) {
+             btn.classList.add('active', 'text-sky-400', 'border-sky-400');
+             btn.classList.remove('text-slate-400');
+        } else {
+             btn.classList.remove('active', 'text-sky-400', 'border-sky-400');
+             btn.classList.add('text-slate-400');
+        }
+        
+        // Add click listener
+        btn.addEventListener('click', () => {
+             const filter = btn.getAttribute('data-filter') || 'all';
+             
+             // Update URL
+             const newUrl = new URL(window.location);
+             if (filter === 'all') newUrl.searchParams.delete('filter');
+             else newUrl.searchParams.set('filter', filter);
+             history.replaceState(null, '', newUrl);
+
+             // Update Buttons
+             buttons.forEach(b => {
+                b.classList.remove('active', 'text-sky-400', 'border-sky-400');
+                b.classList.add('text-slate-400');
+            });
+            btn.classList.add('active', 'text-sky-400', 'border-sky-400');
+            btn.classList.remove('text-slate-400');
+
+            applyFilter(filter, true);
+        });
+    });
+
+    // Apply initial filter (no animation)
+    applyFilter(initialFilter, false);
   }
 
   // Run on load and after Astro View Transitions
   setupFilters();
-  document.addEventListener('astro:page-load', setupFilters);
+  document.addEventListener('astro:after-swap', setupFilters);
 </script>
 
 <style>
