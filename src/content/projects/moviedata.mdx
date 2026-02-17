@@ -16,7 +16,7 @@ import image_7 from '../../assets/images/moviedata/output_37_0.png';
 
 
 
-<a href="/images/moviedata/output_31_0.png" class="glightbox">
+<a href="/images/moviedata/output_31_0.png" className="glightbox">
 <Image src={image_1} alt="" />
 </a>
 **Project description:** Personal python data analytics notebook from August 2025
@@ -59,7 +59,7 @@ df.info()
 df.sample(5)
 
 ```
-
+```
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 3348 entries, 0 to 3347
     Data columns (total 12 columns):
@@ -79,12 +79,12 @@ df.sample(5)
      11  directors       3348 non-null   object
     dtypes: float64(2), int64(4), object(6)
     memory usage: 314.0+ KB
-
+```
 <div>
 
-<table border="1" class="dataframe">
+<table className="dataframe" border="1">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>id</th>
       <th>primaryTitle</th>
@@ -198,9 +198,9 @@ df.head(5)
 
 <div>
 
-<table border="1" class="dataframe">
+<table className="dataframe" border="1">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>id</th>
       <th>primaryTitle</th>
@@ -299,9 +299,9 @@ df.describe()
 
 <div>
 
-<table border="1" class="dataframe">
+<table className="dataframe" border="1">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>runtimeMinutes</th>
       <th>averageRating</th>
@@ -401,9 +401,9 @@ df[df.budget.isin([6000, 356000000])]
 
 <div>
 
-<table border="1" class="dataframe">
+<table className="dataframe" border="1">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>id</th>
       <th>primaryTitle</th>
@@ -485,7 +485,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<a href="/images/moviedata/output_22_0.png" class="glightbox">    
+<a href="/images/moviedata/output_22_0.png" className="glightbox">    
 <Image src={image_2} alt="" />
 </a>
 
@@ -520,7 +520,7 @@ plt.show()
     Comedy      1,453,683,476
     Name: gross, dtype: float64
 
-<a href="/images/moviedata/output_24_1.png" class="glightbox">
+<a href="/images/moviedata/output_24_1.png" className="glightbox">
 <Image src={image_3} alt="" />
 </a>
 
@@ -540,7 +540,7 @@ plt.show()
 
 ```
 
-<a href="/images/moviedata/output_27_0.png" class="glightbox">    
+<a href="/images/moviedata/output_27_0.png" className="glightbox">    
 <Image src={image_4} alt="" />
 </a>
 
@@ -561,7 +561,7 @@ plt.xticks(rotation=45, ha='right')
 plt.show()
 ```
 
-<a href="/images/moviedata/output_29_0.png" class="glightbox">    
+<a href="/images/moviedata/output_29_0.png" className="glightbox">    
 <Image src={image_5} alt="" />
 </a>
 
@@ -586,7 +586,7 @@ with sns.axes_style('darkgrid'):
 plt.show()
 ```
 
-<a href="/images/moviedata/output_31_0.png" class="glightbox">    
+<a href="/images/moviedata/output_31_0.png" className="glightbox">    
 <Image src={image_1} alt="" />
 </a>
 
@@ -613,7 +613,7 @@ with sns.axes_style('darkgrid'):
 plt.show()
 ```
 
-<a href="/images/moviedata/output_34_0.png" class="glightbox">
+<a href="/images/moviedata/output_34_0.png" className="glightbox">
 <Image src={image_6} alt="" />
 </a>
 
@@ -637,7 +637,7 @@ with sns.axes_style('darkgrid'):
          xlabel='Budget in $100 millions')
 ```
 
-<a href="/images/moviedata/output_37_0.png" class="glightbox">
+<a href="/images/moviedata/output_37_0.png" className="glightbox">
 <Image src={image_7} alt="" />
 </a>
 
@@ -646,7 +646,7 @@ All in all, we can be pretty confident that there does indeed seem to be a relat
 
 ## Own Regression with scikit-learn
 
-$ REVENUE = \theta \_0 + \theta \_1 \* BUDGET$
+$ REVENUE = theta_0 + theta_1 * BUDGET $
 
 ```python
 regression = LinearRegression()

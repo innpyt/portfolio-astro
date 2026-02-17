@@ -21,7 +21,7 @@ import image_12 from '../../assets/images/jobdata/output_32_0.png';
 
 
 
-<a href="/images/jobdata/output_15_0.png" class="glightbox">
+<a href="/images/jobdata/output_15_0.png" className="glightbox">
 <Image src={image_1} alt="" />
 </a>
 
@@ -69,40 +69,40 @@ df = pd.read_csv('../tmp/csv/Scraped_Jobs.csv')
 #df.tail()
 df.info()
 df.sample(5)
-
 ```
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 2966 entries, 0 to 2965
-    Data columns (total 18 columns):
-     #   Column              Non-Null Count  Dtype
-    ---  ------              --------------  -----
-     0   job_id              2966 non-null   int64
-     1   job_title           2966 non-null   object
-     2   job_link            2966 non-null   object
-     3   company_name        2966 non-null   object
-     4   company_rating      1147 non-null   float64
-     5   location            2928 non-null   object
-     6   salary_estimate     333 non-null    object
-     7   job_age             2966 non-null   object
-     8   job_age_days        2966 non-null   int64
-     9   job_hours           0 non-null      float64
-     10  first_scraped_date  2776 non-null   object
-     11  last_scraped_date   2943 non-null   object
-     12  filter              1820 non-null   object
-     13  promoted            1492 non-null   object
-     14  platform            2966 non-null   object
-     15  status              2733 non-null   object
-     16  comment             869 non-null    object
-     17  source              2966 non-null   object
-    dtypes: float64(2), int64(2), object(14)
-    memory usage: 417.2+ KB
-
+```
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 2966 entries, 0 to 2965
+Data columns (total 18 columns):
+    #   Column              Non-Null Count  Dtype
+---  ------              --------------  -----
+    0   job_id              2966 non-null   int64
+    1   job_title           2966 non-null   object
+    2   job_link            2966 non-null   object
+    3   company_name        2966 non-null   object
+    4   company_rating      1147 non-null   float64
+    5   location            2928 non-null   object
+    6   salary_estimate     333 non-null    object
+    7   job_age             2966 non-null   object
+    8   job_age_days        2966 non-null   int64
+    9   job_hours           0 non-null      float64
+    10  first_scraped_date  2776 non-null   object
+    11  last_scraped_date   2943 non-null   object
+    12  filter              1820 non-null   object
+    13  promoted            1492 non-null   object
+    14  platform            2966 non-null   object
+    15  status              2733 non-null   object
+    16  comment             869 non-null    object
+    17  source              2966 non-null   object
+dtypes: float64(2), int64(2), object(14)
+memory usage: 417.2+ KB
+```
 <div>
 
-<table border="1" class="dataframe">
+<table className="dataframe" border="1">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>job_id</th>
       <th>job_title</th>
@@ -214,7 +214,7 @@ Now, let's break down job titles by category.
 
 _PS: 'Entwickler' is the German translation for 'developer'._
 
-**Why?:** Whether or not you read [<a href="https://css-tricks.com/the-great-divide/" target="_blank" class="inline">The Great Divide</a>] omitting a common job title term can significantly affect the **number** of jobs found.
+**Why?:** Whether or not you read [<a href="https://css-tricks.com/the-great-divide/" target="_blank" className="inline">The Great Divide</a>] omitting a common job title term can significantly affect the **number** of jobs found.
 Another reason: While multiple articles suggest **Engineers** receive higher salaries, my relatively small dataset (see [Salary Section](#salary-analysis-and-normalization)) couldn't confirm this difference.
 
 ```python
@@ -251,7 +251,7 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 ```
 
-<a href="/images/jobdata/output_12_0.png" class="glightbox">
+<a href="/images/jobdata/output_12_0.png" className="glightbox">
 <Image src={image_2} alt="" />
 </a>
 
@@ -301,7 +301,7 @@ plt.grid(axis='y', linestyle='--', alpha=0.7)
 plt.tight_layout()
 ```
 
-<a href="/images/jobdata/output_15_0.png" class="glightbox">
+<a href="/images/jobdata/output_15_0.png" className="glightbox">
 <Image src={image_1} alt="" />
 </a>
 
@@ -375,7 +375,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<a href="/images/jobdata/output_18_0.png" class="glightbox">
+<a href="/images/jobdata/output_18_0.png" className="glightbox">
 <Image src={image_3} alt="" />
 </a>
 
@@ -446,7 +446,7 @@ plt.show()
     Filtered out jobs: 1174
     No filter jobs: 894
 
-<a href="/images/jobdata/output_21_1.png" class="glightbox">
+<a href="/images/jobdata/output_21_1.png" className="glightbox">
 <Image src={image_4} alt="" />
 </a>
 
@@ -489,7 +489,7 @@ plt.tight_layout(rect=[0, 0.03, 1, 0.95])
 plt.show()
 ```
 
-<a href="/images/jobdata/output_23_0.png" class="glightbox">
+<a href="/images/jobdata/output_23_0.png" className="glightbox">
 <Image src={image_5} alt="" />
 </a>
 
@@ -662,27 +662,27 @@ generate_plots(fullstack_df_ln, "Fullstack Jobs LN")
 generate_plots(fullstack_df_gd, "Fullstack Jobs GD")
 ```
 
-<a href="/images/jobdata/output_26_0.png" class="glightbox">
+<a href="/images/jobdata/output_26_0.png" className="glightbox">
 <Image src={image_6} alt="" />
 </a>
 
-<a href="/images/jobdata/output_26_1.png" class="glightbox">
+<a href="/images/jobdata/output_26_1.png" className="glightbox">
 <Image src={image_7} alt="" />
 </a>
 
-<a href="/images/jobdata/output_26_2.png" class="glightbox">
+<a href="/images/jobdata/output_26_2.png" className="glightbox">
 <Image src={image_8} alt="" />
 </a>
 
-<a href="/images/jobdata/output_23_0.png" class="glightbox">
+<a href="/images/jobdata/output_23_0.png" className="glightbox">
 <Image src={image_5} alt="" />
 </a>
 
-<a href="/images/jobdata/output_26_4.png" class="glightbox">
+<a href="/images/jobdata/output_26_4.png" className="glightbox">
 <Image src={image_9} alt="" />
 </a>
 
-<a href="/images/jobdata/output_26_5.png" class="glightbox">
+<a href="/images/jobdata/output_26_5.png" className="glightbox">
 <Image src={image_10} alt="" />
 </a>
 
@@ -721,7 +721,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<a href="/images/jobdata/output_29_0.png" class="glightbox">    
+<a href="/images/jobdata/output_29_0.png" className="glightbox">    
 <Image src={image_11} alt="" />
 </a>
 
@@ -755,7 +755,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-<a href="/images/jobdata/output_32_0.png" class="glightbox">    
+<a href="/images/jobdata/output_32_0.png" className="glightbox">    
 <Image src={image_12} alt="" />
 </a>
 
