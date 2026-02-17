@@ -5,12 +5,27 @@ image: '../../assets/images/jobdata/output_15_0.png'
 weight: 2
 stack: ['Python', 'Pandas', 'Matplotlib', 'Seaborn']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/jobdata/output_15_0.png';
+import image_2 from '../../assets/images/jobdata/output_12_0.png';
+import image_3 from '../../assets/images/jobdata/output_18_0.png';
+import image_4 from '../../assets/images/jobdata/output_21_1.png';
+import image_5 from '../../assets/images/jobdata/output_23_0.png';
+import image_6 from '../../assets/images/jobdata/output_26_0.png';
+import image_7 from '../../assets/images/jobdata/output_26_1.png';
+import image_8 from '../../assets/images/jobdata/output_26_2.png';
+import image_9 from '../../assets/images/jobdata/output_26_4.png';
+import image_10 from '../../assets/images/jobdata/output_26_5.png';
+import image_11 from '../../assets/images/jobdata/output_29_0.png';
+import image_12 from '../../assets/images/jobdata/output_32_0.png';
+
+
 
 <a href="/images/jobdata/output_15_0.png" class="glightbox">
-<img src="/images/jobdata/output_15_0.png"/>
+<Image src={image_1} alt="" />
 </a>
 
-**Project description:** Personal python data analytics notebook from October 2025.<br>
+**Project description:** Personal python data analytics notebook from October 2025.<br/>
 **Dataset**: 3000 jobs scraped with **[JobScraper](/portfolio/projects/jobscraper)** within July-October 2025
 
 ## Analysis of ~3,000 Jobs from LinkedIn and Glassdoor (Last 3 Months)
@@ -182,7 +197,7 @@ df.sample(5)
 
 ### Cleanup
 
-But first lets remove duplicate job entries (reposted jobs under new IDs). <br>
+But first lets remove duplicate job entries (reposted jobs under new IDs). <br/>
 e.g OPED posted same 'Fullstack Developer Python/ React (f/m/d) - remote' job 75 times within last 3 months
 
 ```python
@@ -237,10 +252,10 @@ plt.tight_layout()
 ```
 
 <a href="/images/jobdata/output_12_0.png" class="glightbox">
-<img src="/images/jobdata/output_12_0.png" />
+<Image src={image_2} alt="" />
 </a>
 
-That's the reason why I decided that Fullstack transition is a way. Job market is twice as bigger.<br>
+That's the reason why I decided that Fullstack transition is a way. Job market is twice as bigger.<br/>
 However, Fullstack roles also involve a much wider technology spread (Node, Java, PHP, .NET, Go, etc.).
 
 ### 2. by technology
@@ -287,19 +302,19 @@ plt.tight_layout()
 ```
 
 <a href="/images/jobdata/output_15_0.png" class="glightbox">
-<img src="/images/jobdata/output_15_0.png" />
+<Image src={image_1} alt="" />
 </a>
 
-As shown, the **number** of React jobs surpasses Angular and Vue combined.<br>
-But Java + Angular often come together and are therefore also a strong pick.<br>
-PS: keep in mind that these are only the jobs containing term in the title. But, given that I've applied to almost every Vue job I found, I can assure you that the real amount is not that far from the above extrapolation.<br><br>
+As shown, the **number** of React jobs surpasses Angular and Vue combined.<br/>
+But Java + Angular often come together and are therefore also a strong pick.<br/>
+PS: keep in mind that these are only the jobs containing term in the title. But, given that I've applied to almost every Vue job I found, I can assure you that the real amount is not that far from the above extrapolation.<br/><br/>
 Which you can find here https://www.linkedin.com/pulse/i-applied-236-jobs-frontend-developer-germany-since-march-schmidt-pihuf/#ember545 (156 React vs 60 Vue)
 
 ## Source Performance and Redundancy
 
-LinkedIn and Glassdoor searches are far from perfect.<br>
-LinkedIn allows to use logical operators like '"Full Stack Engineer" OR "fullstack" OR "node.js"', but still I had to use 4 different feeds to check for frontend/fullstack and munich hybrid/remote.<br>
-Glassdoor is even worse, there I had to use 10 different feeds.<br>
+LinkedIn and Glassdoor searches are far from perfect.<br/>
+LinkedIn allows to use logical operators like '"Full Stack Engineer" OR "fullstack" OR "node.js"', but still I had to use 4 different feeds to check for frontend/fullstack and munich hybrid/remote.<br/>
+Glassdoor is even worse, there I had to use 10 different feeds.<br/>
 
 Lets see how many jobs were unique to each feed.
 
@@ -361,7 +376,7 @@ plt.show()
 ```
 
 <a href="/images/jobdata/output_18_0.png" class="glightbox">
-<img src="/images/jobdata/output_18_0.png" />
+<Image src={image_3} alt="" />
 </a>
 
 **Observation:** LinkedIn feeds appear to contribute fewer unique jobs (likely due to my specific logical filters and broad Glassdoor coverage), but there is no clear outlier to remove yet.
@@ -432,7 +447,7 @@ plt.show()
     No filter jobs: 894
 
 <a href="/images/jobdata/output_21_1.png" class="glightbox">
-<img src="/images/jobdata/output_21_1.png" />
+<Image src={image_4} alt="" />
 </a>
 
 **Conclusion:** Approximately **each 2nd job** is filtered out due to low score (Glassdoor only), pre-application status, company blacklisting, or non-relevant terms in the title. This process saves significant time daily.
@@ -475,7 +490,7 @@ plt.show()
 ```
 
 <a href="/images/jobdata/output_23_0.png" class="glightbox">
-<img src="/images/jobdata/output_23_0.png" />
+<Image src={image_5} alt="" />
 </a>
 
 **Observation:** Both platforms yield a similar number of unique jobs (Glassdoor provides 118 more). However, LinkedIn jobs appear slightly more relevant (likely due to the scraper's use of logical operators and/or the platform's search quality).
@@ -484,8 +499,8 @@ plt.show()
 
 ### Normalisation
 
-Salary data comes in various inconsistent formats: 60.000 €, €58K/yr, €1,000/month, €50/hr and in USD $58K/yr, so we need to **normalise and split** it to different columns for easier sorting/use in data charts.<br>
-PS: will be moved to scraper logic later, but for now we do it here. <br>
+Salary data comes in various inconsistent formats: 60.000 €, €58K/yr, €1,000/month, €50/hr and in USD $58K/yr, so we need to **normalise and split** it to different columns for easier sorting/use in data charts.<br/>
+PS: will be moved to scraper logic later, but for now we do it here. <br/>
 Also I will filter jobs with salary < 40k and > 120k as those are mostly intern, high-level EM/Staff positions or just US-based
 
 ```python
@@ -648,27 +663,27 @@ generate_plots(fullstack_df_gd, "Fullstack Jobs GD")
 ```
 
 <a href="/images/jobdata/output_26_0.png" class="glightbox">
-<img src="/images/jobdata/output_26_0.png" />
+<Image src={image_6} alt="" />
 </a>
 
 <a href="/images/jobdata/output_26_1.png" class="glightbox">
-<img src="/images/jobdata/output_26_1.png" />
+<Image src={image_7} alt="" />
 </a>
 
 <a href="/images/jobdata/output_26_2.png" class="glightbox">
-<img src="/images/jobdata/output_26_2.png" />
+<Image src={image_8} alt="" />
 </a>
 
 <a href="/images/jobdata/output_23_0.png" class="glightbox">
-<img src="/images/jobdata/output_23_0.png" />
+<Image src={image_5} alt="" />
 </a>
 
 <a href="/images/jobdata/output_26_4.png" class="glightbox">
-<img src="/images/jobdata/output_26_4.png" />
+<Image src={image_9} alt="" />
 </a>
 
 <a href="/images/jobdata/output_26_5.png" class="glightbox">
-<img src="/images/jobdata/output_26_5.png" />
+<Image src={image_10} alt="" />
 </a>
 
 **Note**: Following points are to be interpreted as basic descriptive analysis with no statistical significance due to the relatively small size of the dataset. For more accurate data I suggest you to check salary reports on spesialised websites.
@@ -707,7 +722,7 @@ plt.show()
 ```
 
 <a href="/images/jobdata/output_29_0.png" class="glightbox">    
-<img src="/images/jobdata/output_29_0.png" />
+<Image src={image_11} alt="" />
 </a>
 
 **How to read:**
@@ -741,7 +756,7 @@ plt.show()
 ```
 
 <a href="/images/jobdata/output_32_0.png" class="glightbox">    
-<img src="/images/jobdata/output_32_0.png" />
+<Image src={image_12} alt="" />
 </a>
 
 Median range is 10k. Wider range might indicate the company is more flexible or less certain about the exact salary for the candidate, giving you more negotiation room.

@@ -5,9 +5,17 @@ image: '../../assets/images/babyone/babyone_home.jpg'
 weight: 5
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/babyone/home.png';
+import image_2 from '../../assets/images/babyone/listing.png';
+import image_3 from '../../assets/images/babyone/detail.png';
+import image_4 from '../../assets/images/babyone/address.png';
+import image_5 from '../../assets/images/babyone/address-modal.png';
+
+
 
 <a href="/images/babyone/home.png" class="glightbox">
-<img src="/images/babyone/home.png"/>
+<Image src={image_1} alt="" />
 </a>
 
 **Project description:** BabyOne has been the leading omnichannel provider of baby and toddler products in the franchise system in the DACH region for over 35 years. We offer expectant and young families a wide range of products from our own and third-party brands, as well as customized service offerings – on-site, in one of our 28 own stores or 76 franchise stores, and digitally via our online shop. BabyOne is a second-generation, owner-managed family business run by Dr. Anna Weber and Dr. Jan-Willem Weischer. The company employs over 1,400 people at its headquarters, its own stores, and its franchise stores. BabyOne Franchise- und Systemzentrale GmbH is based in Münster.
@@ -32,23 +40,23 @@ stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 #### Listing
 
 <a href="/images/babyone/listing.png" class="glightbox" data-description="Listing">
-<img src="/images/babyone/listing.png"/>
+<Image src={image_2} alt="" />
 </a>
 
 #### Detail
 
 <a href="/images/babyone/detail.png" class="glightbox" data-description="Detail">
-<img src="/images/babyone/detail.png"/>
+<Image src={image_3} alt="" />
 </a>
 
 #### Address states
 
 <a href="/images/babyone/address.png" class="glightbox" data-description="Address states">
-<img src="/images/babyone/address.png"/>
+<Image src={image_4} alt="" />
 </a>
 
 #### Address modal
 
 <a href="/images/babyone/address-modal.png" class="glightbox" data-description="Address modal">
-<img src="/images/babyone/address-modal.png"/>
+<Image src={image_5} alt="" />
 </a>

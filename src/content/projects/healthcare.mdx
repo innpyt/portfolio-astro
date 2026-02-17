@@ -5,11 +5,16 @@ image: '../../assets/images/healthcare/home.png'
 weight: 1
 stack: ['Python FastAPI', 'PostgresSQL', 'React', 'Docker']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/healthcare/home.png';
+import image_2 from '../../assets/images/healthcare/api.png';
+
+
 
 [<a href="https://github.com/innpyt/healthcare-ta/" target="_blank" class="inline">Github</a>]
 
 <a href="/images/healthcare/home.png" class="glightbox">
-<img src="/images/healthcare/home.png"/>
+<Image src={image_1} alt="" />
 </a>
 
 **Project description:** This project was a solution for the technical case for the Senior Software Engineer position. It is a basic healthcare data platform focused on claims and prescription data, with a relational database, RESTful APIs, and a minimal analytics dashboard.
@@ -25,4 +30,4 @@ stack: ['Python FastAPI', 'PostgresSQL', 'React', 'Docker']
 
 #### API
 
-<img src="/images/healthcare/api.png"/>
+<Image src={image_2} alt="" />

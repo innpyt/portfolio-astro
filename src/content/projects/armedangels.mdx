@@ -5,9 +5,17 @@ image: '../../assets/images/armedangels/home.png'
 weight: 7
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/armedangels/home.png';
+import image_2 from '../../assets/images/armedangels/listing.png';
+import image_3 from '../../assets/images/armedangels/pdp.png';
+import image_4 from '../../assets/images/armedangels/video.png';
+import image_5 from '../../assets/images/armedangels/reviews.png';
+
+
 
 <a href="/images/armedangels/home.png" class="glightbox">
-<img src="/images/armedangels/home.png"/>
+<Image src={image_1} alt="" />
 </a>
 
 **Project description:** ARMEDANGELS is a pioneer of slow fashion and, at the same time, a true trailblazer in the e-commerce sector. The Cologne-based fashion label relies on sustainable and regenerative materials and designs that are as timeless as possible so as not to have to follow every new trend. They have been selling this fashion primarily through their online shop for 12 years, generating total sales of around €40 million annually. Today, their fair fashion products can be purchased in over 1,000 stores in Europe, but the Cologne-based company started out as a purely online company with just one sales channel – an online shop, through which they still generate a large portion of their sales today, only with a much more sophisticated shopping experience and convenience.
@@ -25,23 +33,23 @@ stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 #### Listing
 
 <a href="/images/armedangels/listing.png" class="glightbox" data-description="Listing">
-<img src="/images/armedangels/listing.png"/>
+<Image src={image_2} alt="" />
 </a>
 
 #### Product
 
 <a href="/images/armedangels/pdp.png" class="glightbox" data-description="Product">
-<img src="/images/armedangels/pdp.png"/>
+<Image src={image_3} alt="" />
 </a>
 
 #### Video page builder block
 
 <a href="/images/armedangels/video.png" class="glightbox" data-description="Video page builder block">
-<img src="/images/armedangels/video.png"/>
+<Image src={image_4} alt="" />
 </a>
 
 #### Reviews
 
 <a href="/images/armedangels/reviews.png" class="glightbox" data-description="Reviews">
-<img src="/images/armedangels/reviews.png"/>
+<Image src={image_5} alt="" />
 </a>

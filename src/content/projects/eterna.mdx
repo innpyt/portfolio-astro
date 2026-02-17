@@ -5,9 +5,18 @@ image: '../../assets/images/eterna/home.png'
 weight: 6
 stack: ['Shopware 6', 'Vue', 'Microfrontends', 'Twig', 'Javascript']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/eterna/home.png';
+import image_2 from '../../assets/images/eterna/listing.png';
+import image_3 from '../../assets/images/eterna/detail.png';
+import image_4 from '../../assets/images/eterna/offcanvas.png';
+import image_5 from '../../assets/images/eterna/monogram.png';
+import image_6 from '../../assets/images/eterna/map.png';
+
+
 
 <a href="/images/eterna/home.png" class="glightbox">
-<img src="/images/eterna/home.png"/>
+<Image src={image_1} alt="" />
 </a>
 
 **Project description:** Founded in 1863 as a lingerie factory, the long-established ETERNA company stands for timelessly modern elegance, the highest quality, and numerous innovations in modern men's shirts and women's blouses. With its patented invention of shirt collars made of special fabric, the company was the world's first clothing company to be certified according to the Oeko-Tex Standard 100 plus and remains the market leader in crease- and iron-free shirts and blouses. As a specialist, ETERNA can fully utilize its in-depth knowledge of its core product range – perfect fit, variation in sleeve lengths and variations, and collar shapes are just a few examples. With high-quality cotton fabrics and the latest clothing innovations, ETERNA asserts itself as a master of business fashion.
@@ -37,29 +46,29 @@ stack: ['Shopware 6', 'Vue', 'Microfrontends', 'Twig', 'Javascript']
 #### Listing
 
 <a href="/images/eterna/listing.png" class="glightbox"  data-description="Listing">
-<img src="/images/eterna/listing.png"/>
+<Image src={image_2} alt="" />
 </a>
 
 #### Detail
 
 <a href="/images/eterna/detail.png" class="glightbox" data-description="Detail">
-<img src="/images/eterna/detail.png"/>
+<Image src={image_3} alt="" />
 </a>
 
 #### Offcanvas
 
 <a href="/images/eterna/offcanvas.png" class="glightbox" data-description="Offcanvas">
-<img src="/images/eterna/offcanvas.png"/>
+<Image src={image_4} alt="" />
 </a>
 
 #### Monogram
 
 <a href="/images/eterna/monogram.png" class="glightbox" data-description="Monogram">
-<img src="/images/eterna/monogram.png"/>
+<Image src={image_5} alt="" />
 </a>
 
 #### Map
 
 <a href="/images/eterna/map.png" class="glightbox" data-description="Map">
-<img src="/images/eterna/map.png"/>
+<Image src={image_6} alt="" />
 </a>

@@ -5,16 +5,20 @@ image: '../../assets/images/jobdash/home.png'
 weight: 2
 stack: ['Python', 'Flask', 'React', 'shadcn', 'sqlite']
 ---
+import { Image } from 'astro:assets';
+import image_1 from '../../assets/images/jobdash/home.png';
+
+
 
 <a href="/images/jobdash/home.png" class="glightbox">
-<img src="/images/jobdash/home.png"/>
+<Image src={image_1} alt="" />
 </a>
 
 **Project description:** Personal job dashboard app from July 2025 which I built to automate my daily routine of checking new job applications on different job boards.
 
-**Why?**<br>
+**Why?**<br/>
 Remember **[JobScraper](/portfolio/projects/jobscraper)** ?
-Google Sheet or CSV are good but sometimes not flexible enough, e.g google sheet api limits, you can't hide filtered jobs with single click or persist the jobs from previous scrapes. <br>PS: well you certainly can, but this wont show my Flask skills 😉
+Google Sheet or CSV are good but sometimes not flexible enough, e.g google sheet api limits, you can't hide filtered jobs with single click or persist the jobs from previous scrapes. <br/>PS: well you certainly can, but this wont show my Flask skills 😉
 
 ## Highlights
 

@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 import profileImage from '../assets/alex.jpeg';
 ---
 
@@ -11,13 +11,11 @@ import profileImage from '../assets/alex.jpeg';
         <p class="mt-2 text-base font-medium !text-teal-500">Typescript | Vue & Nuxt | Python</p>
     </div>
     <div class="relative h-62 w-62 overflow-hidden rounded-full border-0 border-slate-700 shadow-xl">
-        <Picture
+        <Image
             src={profileImage}
             alt="Alex Schmidt"
-            widths={[400, 800]}
-            sizes="(max-width: 800px) 100vw, 400px"
-            formats={['avif', 'webp']}
-            fallbackFormat="jpeg"
+            width={500}
+            height={500}
             class="h-full w-full object-cover"
             loading="eager"
             fetchpriority="high"
