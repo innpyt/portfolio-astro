@@ -1,7 +1,7 @@
 ---
 title: 'Ben Sherman'
 tags: ['Vue']
-image: '/images/bensherman/bensherman_home.jpg'
+image: '../../assets/images/bensherman/bensherman_home.jpg'
 weight: 0
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 old: true

@@ -1,7 +1,7 @@
 ---
 title: 'Babyone'
 tags: ['Vue']
-image: '/images/babyone/babyone_home.jpg'
+image: '../../assets/images/babyone/babyone_home.jpg'
 weight: 5
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 ---

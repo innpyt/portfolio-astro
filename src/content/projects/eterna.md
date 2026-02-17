@@ -1,7 +1,7 @@
 ---
 title: 'Eterna'
 tags: ['Vue']
-image: '/images/eterna/home.png'
+image: '../../assets/images/eterna/home.png'
 weight: 6
 stack: ['Shopware 6', 'Vue', 'Microfrontends', 'Twig', 'Javascript']
 ---

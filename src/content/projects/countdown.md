@@ -1,7 +1,7 @@
 ---
 title: 'Countdown'
 tags: ['React', 'Pet']
-image: '/images/countdown/home.png'
+image: '../../assets/images/countdown/home.png'
 weight: 0
 stack: ['React 16', 'Javascript']
 ---

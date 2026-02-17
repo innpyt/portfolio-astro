@@ -1,7 +1,7 @@
 ---
 title: 'Armedangels'
 tags: ['Vue']
-image: '/images/armedangels/home.png'
+image: '../../assets/images/armedangels/home.png'
 weight: 7
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 ---

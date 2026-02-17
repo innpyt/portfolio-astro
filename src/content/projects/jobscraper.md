@@ -1,7 +1,7 @@
 ---
 title: 'JobScraper'
 tags: ['Python', 'Pet']
-image: '/images/jobscraper/home.png'
+image: '../../assets/images/jobscraper/home.png'
 weight: 3
 highlight: true
 stack: ['Python', 'Playwright', 'Pandas', 'Gspread']

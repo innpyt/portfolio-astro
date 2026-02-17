@@ -1,7 +1,7 @@
 ---
 title: 'JobDash'
 tags: ['Python', 'Pet']
-image: '/images/jobdash/home.png'
+image: '../../assets/images/jobdash/home.png'
 weight: 2
 stack: ['Python', 'Flask', 'React', 'shadcn', 'sqlite']
 ---

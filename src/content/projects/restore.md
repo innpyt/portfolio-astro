@@ -1,7 +1,7 @@
 ---
 title: 'ReStore'
 tags: ['React', 'Pet']
-image: '/images/restore/home.png'
+image: '../../assets/images/restore/home.png'
 weight: 0
 stack: ['React', 'Redux', 'Javascript']
 ---

@@ -1,59 +1,58 @@
-
 ---
 import type { CollectionEntry } from 'astro:content';
 import { Icon } from 'astro-icon/components';
 import Badge from '../components/Badge.astro';
-
+import { Picture } from 'astro:assets';
 
 interface Props {
-  project: CollectionEntry<'projects'>;
-  priority?: boolean;
+    project: CollectionEntry<'projects'>;
+    priority?: boolean;
 }
 
 const { project, priority = false } = Astro.props;
 ---
 
-<a 
-  href={`/projects/${project.slug}`} 
-  class={`project-card group relative overflow-hidden rounded-xl bg-slate-800 block transition-all duration-300 border-1 hover:shadow-cyan-500/20 hover:shadow-lg ${project.data.highlight ? 'border-yellow-400 bg-yellow-400/10' : 'border-transparent'} ${project.data.old ? 'opacity-50 pointer-events-none grayscale-50 !border-gray-600' : ''}`}
-  data-tags={JSON.stringify(project.data.tags)}
-  data-weight={project.data.weight || 0}
-  data-highlight={project.data.highlight ? 'true' : 'false'}
-  data-title={project.data.title}
+<a
+    href={`/projects/${project.slug}`}
+    class={`project-card group relative overflow-hidden rounded-xl bg-slate-800 block transition-all duration-300 border-1 hover:shadow-cyan-500/20 hover:shadow-lg ${project.data.highlight ? 'border-yellow-400 bg-yellow-400/10' : 'border-transparent'} ${project.data.old ? 'opacity-50 pointer-events-none grayscale-50 !border-gray-600' : ''}`}
+    data-tags={JSON.stringify(project.data.tags)}
+    data-weight={project.data.weight || 0}
+    data-highlight={project.data.highlight ? 'true' : 'false'}
+    data-title={project.data.title}
 >
-  <div class="aspect-video w-full overflow-hidden bg-slate-800">
-    {project.data.image ? (
-      <img 
-        src={project.data.image} 
-        alt={project.data.title} 
-        width="640"
-        height="360"
-        class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-        loading={priority ? "eager" : "lazy"}
-        fetchpriority={priority ? "high" : "auto"}
-      />
-    ) : (
-      <div class="flex h-full items-center justify-center text-slate-500">
-        No Image
-      </div>
-    )}
-  </div>
-  
-  <div class="p-4">
-    <h3 class="text-xl font-bold text-sky-400 mb-2 group-hover:text-cyan-300 flex items-center gap-2">
-      {project.data.title}
-      {project.data.highlight && (
-        <span class="text-yellow-400" title="Featured Project">
-          <Icon name="bolt" class="w-5 h-5" />
-        </span>
-      )}
-    </h3>
-    <div class="flex flex-wrap gap-2 mt-2 text-xs">
-      {project.data.tags.map(tag => (
-        <Badge class="bg-transparent">
-            {tag}
-        </Badge>
-      ))}
+    <div class="aspect-video w-full overflow-hidden bg-slate-800">
+        {
+            project.data.image ? (
+                <Picture
+                    src={project.data.image}
+                    alt={project.data.title}
+                    widths={[640, 1280]}
+                    sizes="(max-width: 720px) 100vw, 640px"
+                    formats={['avif', 'webp']}
+                    fallbackFormat="png"
+                    class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading={priority ? 'eager' : 'lazy'}
+                    fetchpriority={priority ? 'high' : 'auto'}
+                />
+            ) : (
+                <div class="flex h-full items-center justify-center text-slate-500">No Image</div>
+            )
+        }
     </div>
-  </div>
+
+    <div class="p-4">
+        <h3 class="mb-2 flex items-center gap-2 text-xl font-bold text-sky-400 group-hover:text-cyan-300">
+            {project.data.title}
+            {
+                project.data.highlight && (
+                    <span class="text-yellow-400" title="Featured Project">
+                        <Icon name="bolt" class="h-5 w-5" />
+                    </span>
+                )
+            }
+        </h3>
+        <div class="mt-2 flex flex-wrap gap-2 text-xs">
+            {project.data.tags.map(tag => <Badge class="bg-transparent">{tag}</Badge>)}
+        </div>
+    </div>
 </a>

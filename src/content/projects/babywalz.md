@@ -1,7 +1,7 @@
 ---
 title: 'Baby Walz'
 tags: ['Vue']
-image: '/images/babywalz/babywalz_home.jpg'
+image: '../../assets/images/babywalz/babywalz_home.jpg'
 weight: 10
 stack:
     ['Vue 3', 'Nuxt', 'Typescript', 'Pinia', 'Storyblok', 'Headless', 'SSR', 'Tailwind']

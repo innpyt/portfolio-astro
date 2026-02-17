@@ -1,7 +1,7 @@
 ---
 title: 'Hugo Boss'
 tags: ['Vue']
-image: '/images/hugoboss/hugoboss_home.jpg'
+image: '../../assets/images/hugoboss/hugoboss_home.jpg'
 weight: 0
 stack: ['Ruby', 'Salesforce', 'Automation']
 old: true

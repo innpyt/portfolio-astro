@@ -1,7 +1,7 @@
 ---
 title: 'TanEvents'
 tags: ['React', 'Pet']
-image: '/images/tanevents/home.png'
+image: '../../assets/images/tanevents/home.png'
 weight: 1
 stack: ['React 19', 'React Query', 'Tanstack', 'Javascript']
 ---

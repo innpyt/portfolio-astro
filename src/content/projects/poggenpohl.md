@@ -1,7 +1,7 @@
 ---
 title: 'Poggenpohl'
 tags: ['Vue']
-image: '/images/poggenpohl/poggenpohl_home.jpg'
+image: '../../assets/images/poggenpohl/poggenpohl_home.jpg'
 weight: 0
 stack: ['Shopware 6', 'Vue', 'Twig', 'Javascript']
 old: true

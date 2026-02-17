@@ -1,7 +1,7 @@
 ---
 title: 'JobData'
 tags: ['Python', 'Pet']
-image: '/images/jobdata/output_15_0.png'
+image: '../../assets/images/jobdata/output_15_0.png'
 weight: 2
 stack: ['Python', 'Pandas', 'Matplotlib', 'Seaborn']
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'ReactFood'
 tags: ['React', 'Pet']
-image: '/images/food/home.png'
+image: '../../assets/images/food/home.png'
 weight: 0
 stack: ['React 16', 'Javascript']
 ---

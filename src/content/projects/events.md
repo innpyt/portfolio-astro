@@ -1,7 +1,7 @@
 ---
 title: 'Events'
 tags: ['React', 'Pet']
-image: '/images/events/home.png'
+image: '../../assets/images/events/home.png'
 weight: 0
 stack: ['React 16', 'React Router', 'Javascript']
 ---

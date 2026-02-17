@@ -1,7 +1,7 @@
 ---
 title: 'HealthcareTA'
 tags: ['React', 'Python', 'TA']
-image: '/images/healthcare/home.png'
+image: '../../assets/images/healthcare/home.png'
 weight: 1
 stack: ['Python FastAPI', 'PostgresSQL', 'React', 'Docker']
 ---

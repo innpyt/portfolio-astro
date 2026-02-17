@@ -1,7 +1,7 @@
 ---
 title: 'Adam Hall'
 tags: ['Vue']
-image: '/images/adamhall/home.png'
+image: '../../assets/images/adamhall/home.png'
 weight: 5
 highlight: true
 stack: ['Vue 3', 'Nuxt', 'Typescript', 'Pinia', 'Headless', 'SSR', 'Tailwind']

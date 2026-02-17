@@ -1,7 +1,7 @@
 ---
 title: 'Placepicker'
 tags: ['React', 'Pet']
-image: '/images/placepicker/home.png'
+image: '../../assets/images/placepicker/home.png'
 weight: 0
 stack: ['React', 'Javascript']
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'Feedback'
 tags: ['React', 'Pet']
-image: '/images/feedback/home.png'
+image: '../../assets/images/feedback/home.png'
 weight: 0
 stack: ['React 16', 'Javascript']
 ---

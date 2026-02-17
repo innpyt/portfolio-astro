@@ -1,7 +1,7 @@
 ---
 title: 'MovieData'
 tags: ['Python', 'Pet']
-image: '/images/moviedata/output_31_0.png'
+image: '../../assets/images/moviedata/output_31_0.png'
 weight: 0
 stack: ['Python', 'Pandas', 'Matplotlib', 'Seaborn', 'Sklearn']
 ---

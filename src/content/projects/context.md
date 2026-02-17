@@ -1,7 +1,7 @@
 ---
 title: 'Context'
 tags: ['React', 'Pet']
-image: '/images/context/home.png'
+image: '../../assets/images/context/home.png'
 weight: 0
 stack: ['React 16', 'Javascript']
 ---

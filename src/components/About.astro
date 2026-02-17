@@ -1,33 +1,53 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Picture } from 'astro:assets';
+import profileImage from '../assets/alex.jpeg';
 ---
-<div class="profile-section space-y-4 flex flex-col items-center">
-   <div>
-      <h1 class="text-4xl font-bold text-slate-100">
-            Alexander Schmidt
-      </h1>
-      <h2 class="!text-sky-500 font-medium text-lg mt-1">
-            Senior/Lead Frontend Engineer
-      </h2>
-      <p class="!text-teal-500 font-medium text-base mt-2">
-            Typescript | Vue & Nuxt | Python
-      </p>
-      </div>
-      <div class="relative w-62 h-62 overflow-hidden rounded-full border-0 border-slate-700 shadow-xl">
-         <img src="/alex.jpeg" alt="Alex Schmidt" class="w-full h-full object-cover" loading="eager" fetchpriority="high" />
-      </div>
-      <div>
-      <div class="flex justify-center gap-4">
-            <a href="https://linkedin.com/in/alsmdt/" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="LinkedIn">
-               <Icon name="square-linkedin" class="w-6 h-6" />
+
+<div class="profile-section flex flex-col items-center space-y-4">
+    <div>
+        <h1 class="text-4xl font-bold text-slate-100">Alexander Schmidt</h1>
+        <h2 class="mt-1 text-lg font-medium !text-sky-500">Senior/Lead Frontend Engineer</h2>
+        <p class="mt-2 text-base font-medium !text-teal-500">Typescript | Vue & Nuxt | Python</p>
+    </div>
+    <div class="relative h-62 w-62 overflow-hidden rounded-full border-0 border-slate-700 shadow-xl">
+        <Picture
+            src={profileImage}
+            alt="Alex Schmidt"
+            widths={[400, 800]}
+            sizes="(max-width: 800px) 100vw, 400px"
+            formats={['avif', 'webp']}
+            fallbackFormat="jpeg"
+            class="h-full w-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+        />
+    </div>
+    <div>
+        <div class="flex justify-center gap-4">
+            <a
+                href="https://linkedin.com/in/alsmdt/"
+                target="_blank"
+                class="text-slate-400 transition-colors hover:text-white"
+                title="LinkedIn"
+            >
+                <Icon name="square-linkedin" class="h-6 w-6" />
             </a>
-            <a href="https://github.com/innpyt/" target="_blank" class="text-slate-400 hover:text-white transition-colors" title="GitHub">
-               <Icon name="github" class="w-6 h-6" />
+            <a
+                href="https://github.com/innpyt/"
+                target="_blank"
+                class="text-slate-400 transition-colors hover:text-white"
+                title="GitHub"
+            >
+                <Icon name="github" class="h-6 w-6" />
             </a>
-      </div>
-      <h2 class="mt-6">About me</h2>
-      <p class="text-slate-400 text-sm mt-2 max-w-xs mx-auto">
-            9 years of engineering excellence in the european Enterprise E-commerce sector. From architecting frontends for luxury retailers to building B2B PWAs and Automation tools, I focus on project and feature ownership. I don't just write code, I optimize workflows, refine CI/CD pipelines, and ensure that every technical decision improves either the developer or user experience.
-      </p>
-   </div>      
+        </div>
+        <h2 class="mt-6">About me</h2>
+        <p class="mx-auto mt-2 max-w-xs text-sm text-slate-400">
+            9 years of engineering excellence in the european Enterprise E-commerce sector. From architecting frontends
+            for luxury retailers to building B2B PWAs and Automation tools, I focus on project and feature ownership. I
+            don't just write code, I optimize workflows, refine CI/CD pipelines, and ensure that every technical
+            decision improves either the developer or user experience.
+        </p>
+    </div>
 </div>

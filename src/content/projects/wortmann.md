@@ -1,7 +1,7 @@
 ---
 title: 'Wortmann'
 tags: ['Vue']
-image: '/images/wortmann/home.png'
+image: '../../assets/images/wortmann/home.png'
 weight: 9
 stack: ['Shopware 6', 'PWA', 'Vue', 'Twig', 'Typescript', 'Javascript']
 highlight: false

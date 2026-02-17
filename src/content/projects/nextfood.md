@@ -1,7 +1,7 @@
 ---
 title: 'NextFood'
 tags: ['React', 'Pet']
-image: '/images/nextfood/home.png'
+image: '../../assets/images/nextfood/home.png'
 weight: 1
 stack: ['React', 'Next', 'SSR', 'Javascript', 'SQlite db']
 ---

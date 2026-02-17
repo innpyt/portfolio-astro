@@ -1,7 +1,7 @@
 ---
 title: 'ExpenseTracker'
 tags: ['React', 'Pet']
-image: '/images/expensetracker/home.png'
+image: '../../assets/images/expensetracker/home.png'
 weight: 5
 stack: ['React 19', 'Typescript', 'Zustand', 'Tailwind']
 ---

@@ -2,289 +2,310 @@
 import { Icon } from 'astro-icon/components';
 ---
 
-<div class="project-filters flex flex-wrap gap-4 justify-center my-8" transition:persist>
-  <button class="filter-btn active px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-sky-400 hover:bg-sky-500/10 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="all">
-    All
-  </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-yellow-400/50 text-yellow-400 bg-slate-800/50 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="Vue">
-    <Icon name="vue" class="w-6 h-6" />
-    Vue
-  </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="React">
-    <Icon name="react" class="w-6 h-6" />
-    React
-  </button>
-  <button class="filter-btn px-6 py-2 rounded-full cursor-pointer flex gap-2 items-center border border-sky-500/30 bg-slate-800/50 text-slate-400 hover:bg-sky-500/10 hover:text-sky-400 hover:border-sky-400 transition-colors duration-150 text-sm font-semibold uppercase tracking-wider" data-filter="Python">
-    <Icon name="python" class="w-6 h-6" />
-    Python
-  </button>
+<div class="project-filters my-8 flex flex-wrap justify-center gap-4">
+    <button
+        class="filter-btn active flex cursor-pointer items-center gap-2 rounded-full border border-sky-500/30 bg-slate-800/50 px-6 py-2 text-sm font-semibold tracking-wider text-sky-400 uppercase transition-colors duration-150 hover:border-sky-400 hover:bg-sky-500/10"
+        data-filter="all"
+    >
+        All
+    </button>
+    <button
+        class="filter-btn flex cursor-pointer items-center gap-2 rounded-full border border-yellow-400/50 bg-slate-800/50 px-6 py-2 text-sm font-semibold tracking-wider text-yellow-400 uppercase transition-colors duration-150 hover:border-sky-400 hover:bg-sky-500/10 hover:text-sky-400"
+        data-filter="Vue"
+    >
+        <Icon name="vue" class="h-6 w-6" />
+        Vue
+    </button>
+    <button
+        class="filter-btn flex cursor-pointer items-center gap-2 rounded-full border border-sky-500/30 bg-slate-800/50 px-6 py-2 text-sm font-semibold tracking-wider text-slate-400 uppercase transition-colors duration-150 hover:border-sky-400 hover:bg-sky-500/10 hover:text-sky-400"
+        data-filter="React"
+    >
+        <Icon name="react" class="h-6 w-6" />
+        React
+    </button>
+    <button
+        class="filter-btn flex cursor-pointer items-center gap-2 rounded-full border border-sky-500/30 bg-slate-800/50 px-6 py-2 text-sm font-semibold tracking-wider text-slate-400 uppercase transition-colors duration-150 hover:border-sky-400 hover:bg-sky-500/10 hover:text-sky-400"
+        data-filter="Python"
+    >
+        <Icon name="python" class="h-6 w-6" />
+        Python
+    </button>
 </div>
-<div id="filter-description" class="text-center text-slate-400 max-w-2xl mx-auto my-6 min-h-[3rem] transition-all duration-300">
+<div
+    id="filter-description"
+    class="mx-auto my-6 min-h-[3rem] max-w-2xl text-center text-slate-400 transition-all duration-300"
+>
     <!-- Description will be injected here -->
 </div>
 
 <script>
-  // @ts-nocheck
-  
-  function setupFilters() {
-    // Initial query
-    let buttons = Array.from(document.querySelectorAll('.filter-btn'));
-    const cards = Array.from(document.querySelectorAll('.project-card'));
-    const grid = document.querySelector('#projects-grid');
-    const descContainer = document.querySelector('#filter-description');
-    
-    // Store initial order
-    cards.forEach((card, index) => {
-      card.dataset.initialOrder = index;
-    });
+    // @ts-nocheck
 
-    const descriptions = {
-        'all': 'Collection of recent work from real-world enterprice e-commerce to data science and automation utilities.',
-        'Vue': 'Real-world enterprise e-commerce focusing Headless, Typescript, Vue 3, Nuxt, Pinia, and Tailwind',
-        'React': 'Advanced explorations of the modern React 16-19 ecosystem: Next.js, Tanstack, React Query, Server Components, Redux/Zustand and performance optimization.',
-        'Python': 'Automation and Data science utilities leveraging FastAPI, Flask and PyData stack (Pandas, Request, NumPy, Scikit Learn, Plotly, Seaborn and Matplotlib)'
-    };
+    function setupFilters() {
+        // Initial query
+        let buttons = Array.from(document.querySelectorAll('.filter-btn'));
+        const cards = Array.from(document.querySelectorAll('.project-card'));
+        const grid = document.querySelector('#projects-grid');
+        const descContainer = document.querySelector('#filter-description');
 
-    function updateActiveButtonStyles(filter) {
-        // Re-query to ensure we have the latest DOM elements if they were swapped
-        const currentButtons = document.querySelectorAll('.filter-btn');
-        currentButtons.forEach(b => {
-             const bFilter = b.getAttribute('data-filter');
-             if (bFilter === filter) {
-                 b.classList.add('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
-                 b.classList.remove('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
-             } else {
-                 b.classList.remove('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
-                 b.classList.add('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
-             }
+        // Store initial order
+        cards.forEach((card, index) => {
+            card.dataset.initialOrder = index;
         });
-    }
 
-    function applyFilter(filter, animate = true) {
-        // 1. Snapshot Positions (only if animating)
-        const firstPositions = new Map();
-        if (animate) {
-            cards.forEach(c => {
-                if (c.style.display !== 'none') {
-                    firstPositions.set(c, c.getBoundingClientRect());
+        const descriptions = {
+            all: 'Collection of recent work from real-world enterprice e-commerce to data science and automation utilities.',
+            Vue: 'Real-world enterprise e-commerce focusing Headless, Typescript, Vue 3, Nuxt, Pinia, and Tailwind',
+            React: 'Advanced explorations of the modern React 16-19 ecosystem: Next.js, Tanstack, React Query, Server Components, Redux/Zustand and performance optimization.',
+            Python: 'Automation and Data science utilities leveraging FastAPI, Flask and PyData stack (Pandas, Request, NumPy, Scikit Learn, Plotly, Seaborn and Matplotlib)',
+        };
+
+        function updateActiveButtonStyles(filter) {
+            // Re-query to ensure we have the latest DOM elements if they were swapped
+            const currentButtons = document.querySelectorAll('.filter-btn');
+            currentButtons.forEach(b => {
+                const bFilter = b.getAttribute('data-filter');
+                if (bFilter === filter) {
+                    b.classList.add('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
+                    b.classList.remove('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
+                } else {
+                    b.classList.remove('active', 'text-sky-300', 'border-sky-400', 'bg-sky-500/20');
+                    b.classList.add('text-slate-400', 'bg-slate-800/50', 'border-sky-500/30');
                 }
             });
         }
 
-        // 2. Sort Logic
-        let sortedCards = [...cards];
-        if (filter === 'all') {
-             sortedCards.sort((a, b) => a.dataset.initialOrder - b.dataset.initialOrder);
-        } else {
-             sortedCards.sort((a, b) => {
-                const highlightA = a.dataset.highlight === 'true';
-                const highlightB = b.dataset.highlight === 'true';
-                if (highlightA && !highlightB) return -1;
-                if (!highlightA && highlightB) return 1;
-
-                const weightA = parseInt(a.dataset.weight || '0');
-                const weightB = parseInt(b.dataset.weight || '0');
-                if (weightA !== weightB) return weightB - weightA;
-
-                return a.dataset.title.localeCompare(b.dataset.title);
-            });
-        }
-
-        const visibleCards = [];
-        
-        // 3. Update DOM
-        sortedCards.forEach(card => {
-             const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
-             const isMatch = filter === 'all' || tags.includes(filter);
-
-             if (isMatch) {
-                 if (card.style.display === 'none') {
-                     card.dataset.status = 'entering';
-                 } else {
-                     card.dataset.status = 'staying';
-                 }
-                 card.style.display = 'block';
-                 grid.appendChild(card);
-                 visibleCards.push(card);
-             } else {
-                 if (card.style.display !== 'none') {
-                     card.dataset.status = 'leaving';
-                 } else {
-                     card.dataset.status = 'hidden';
-                 }
-             }
-        });
-
-        if (!animate) {
-            // Just hide non-matching
-            cards.forEach(c => {
-                if (!visibleCards.includes(c)) c.style.display = 'none';
-            });
-            // Update Description
-            if (descContainer) {
-                descContainer.textContent = descriptions[filter] || '';
+        function applyFilter(filter, animate = true) {
+            // 1. Snapshot Positions (only if animating)
+            const firstPositions = new Map();
+            if (animate) {
+                cards.forEach(c => {
+                    if (c.style.display !== 'none') {
+                        firstPositions.set(c, c.getBoundingClientRect());
+                    }
+                });
             }
-            // Update Buttons
-            updateActiveButtonStyles(filter);
-            return;
-        }
 
-        // 4. Animate Leaving
-        cards.filter(c => c.dataset.status === 'leaving').forEach(c => {
-            const rect = firstPositions.get(c);
-            if (rect) {
-                c.style.position = 'fixed';
-                c.style.top = rect.top + 'px';
-                c.style.left = rect.left + 'px';
-                c.style.width = rect.width + 'px';
-                c.style.height = rect.height + 'px';
-                c.style.boxSizing = 'border-box';
-                c.style.margin = '0';
-                c.style.zIndex = '0';
-                c.style.pointerEvents = 'none';
-                
-                requestAnimationFrame(() => {
-                    c.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+            // 2. Sort Logic
+            let sortedCards = [...cards];
+            if (filter === 'all') {
+                sortedCards.sort((a, b) => a.dataset.initialOrder - b.dataset.initialOrder);
+            } else {
+                sortedCards.sort((a, b) => {
+                    const highlightA = a.dataset.highlight === 'true';
+                    const highlightB = b.dataset.highlight === 'true';
+                    if (highlightA && !highlightB) return -1;
+                    if (!highlightA && highlightB) return 1;
+
+                    const weightA = parseInt(a.dataset.weight || '0');
+                    const weightB = parseInt(b.dataset.weight || '0');
+                    if (weightA !== weightB) return weightB - weightA;
+
+                    return a.dataset.title.localeCompare(b.dataset.title);
+                });
+            }
+
+            const visibleCards = [];
+
+            // 3. Update DOM
+            sortedCards.forEach(card => {
+                const tags = JSON.parse(card.getAttribute('data-tags') || '[]');
+                const isMatch = filter === 'all' || tags.includes(filter);
+
+                if (isMatch) {
+                    if (card.style.display === 'none') {
+                        card.dataset.status = 'entering';
+                    } else {
+                        card.dataset.status = 'staying';
+                    }
+                    card.style.display = 'block';
+                    grid.appendChild(card);
+                    visibleCards.push(card);
+                } else {
+                    if (card.style.display !== 'none') {
+                        card.dataset.status = 'leaving';
+                    } else {
+                        card.dataset.status = 'hidden';
+                    }
+                }
+            });
+
+            if (!animate) {
+                // Just hide non-matching
+                cards.forEach(c => {
+                    if (!visibleCards.includes(c)) c.style.display = 'none';
+                });
+                // Update Description
+                if (descContainer) {
+                    descContainer.textContent = descriptions[filter] || '';
+                }
+                // Update Buttons
+                updateActiveButtonStyles(filter);
+                return;
+            }
+
+            // 4. Animate Leaving
+            cards
+                .filter(c => c.dataset.status === 'leaving')
+                .forEach(c => {
+                    const rect = firstPositions.get(c);
+                    if (rect) {
+                        c.style.position = 'fixed';
+                        c.style.top = rect.top + 'px';
+                        c.style.left = rect.left + 'px';
+                        c.style.width = rect.width + 'px';
+                        c.style.height = rect.height + 'px';
+                        c.style.boxSizing = 'border-box';
+                        c.style.margin = '0';
+                        c.style.zIndex = '0';
+                        c.style.pointerEvents = 'none';
+
+                        requestAnimationFrame(() => {
+                            c.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
+                            c.style.opacity = '0';
+                            c.style.transform = 'scale(0.9)';
+                        });
+
+                        setTimeout(() => {
+                            c.style.display = 'none';
+                            c.style.position = '';
+                            c.style.opacity = '';
+                            c.style.transform = '';
+                            c.style.zIndex = '';
+                            c.style.margin = '';
+                            c.style.pointerEvents = '';
+                            c.style.width = '';
+                            c.style.height = '';
+                            c.style.top = '';
+                            c.style.left = '';
+                        }, 400);
+                    } else {
+                        c.style.display = 'none';
+                    }
+                });
+
+            // 5. Animate Staying & Entering
+            visibleCards.forEach(c => {
+                c.style.transition = 'none';
+
+                if (c.dataset.status === 'staying') {
+                    const oldRect = firstPositions.get(c);
+                    const newRect = c.getBoundingClientRect();
+                    if (oldRect) {
+                        const dx = oldRect.left - newRect.left;
+                        const dy = oldRect.top - newRect.top;
+                        if (dx !== 0 || dy !== 0) {
+                            c.style.transform = `translate(${dx}px, ${dy}px)`;
+                        }
+                    }
+                } else if (c.dataset.status === 'entering') {
                     c.style.opacity = '0';
                     c.style.transform = 'scale(0.9)';
+                }
+            });
+
+            // Play
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    visibleCards.forEach(c => {
+                        c.style.transition = 'opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.2, 0, 0.2, 1)';
+                        c.style.opacity = '1';
+                        c.style.transform = '';
+                    });
                 });
-                
-                setTimeout(() => {
-                    c.style.display = 'none';
-                    c.style.position = '';
-                    c.style.opacity = '';
-                    c.style.transform = '';
-                    c.style.zIndex = '';
-                    c.style.margin = '';
-                    c.style.pointerEvents = '';
-                    c.style.width = '';
-                    c.style.height = '';
-                    c.style.top = '';
-                    c.style.left = '';
-                }, 400);
+            });
+
+            // Update Description & Buttons UI
+            if (descContainer) {
+                const currentDesc = descContainer.textContent;
+                const newDesc = descriptions[filter] || '';
+                if (currentDesc !== newDesc) {
+                    descContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        descContainer.textContent = newDesc;
+                        descContainer.style.opacity = '1';
+                    }, 150);
+                }
+            }
+
+            updateActiveButtonStyles(filter);
+        }
+
+        // Initialize State
+        const urlParams = new URLSearchParams(window.location.search);
+        const storedFilter = sessionStorage.getItem('projectFilter');
+        let initialFilter = urlParams.get('filter');
+
+        // Restoration Logic
+        if (!initialFilter && storedFilter) {
+            initialFilter = storedFilter;
+            // Update URL to match stored filter
+            const newUrl = new URL(window.location);
+            if (initialFilter !== 'all') {
+                newUrl.searchParams.set('filter', initialFilter);
             } else {
-                c.style.display = 'none';
+                newUrl.searchParams.delete('filter');
             }
-        });
-
-        // 5. Animate Staying & Entering
-        visibleCards.forEach(c => {
-            c.style.transition = 'none';
-            
-            if (c.dataset.status === 'staying') {
-                 const oldRect = firstPositions.get(c);
-                 const newRect = c.getBoundingClientRect();
-                 if (oldRect) {
-                     const dx = oldRect.left - newRect.left;
-                     const dy = oldRect.top - newRect.top;
-                     if (dx !== 0 || dy !== 0) {
-                         c.style.transform = `translate(${dx}px, ${dy}px)`;
-                     }
-                 }
-            } else if (c.dataset.status === 'entering') {
-                c.style.opacity = '0';
-                c.style.transform = 'scale(0.9)';
-            }
-        });
-
-        // Play
-        requestAnimationFrame(() => {
-             requestAnimationFrame(() => {
-                visibleCards.forEach(c => {
-                    c.style.transition = 'opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.2, 0, 0.2, 1)';
-                    c.style.opacity = '1';
-                    c.style.transform = '';
-                });
-             });
-        });
-
-        // Update Description & Buttons UI
-        if (descContainer) {
-             const currentDesc = descContainer.textContent;
-             const newDesc = descriptions[filter] || '';
-             if (currentDesc !== newDesc) {
-                descContainer.style.opacity = '0';
-                setTimeout(() => {
-                    descContainer.textContent = newDesc;
-                    descContainer.style.opacity = '1';
-                }, 150);
-             }
+            history.replaceState(null, '', newUrl);
         }
-        
-        updateActiveButtonStyles(filter);
-    }
 
-    // Initialize State
-    const urlParams = new URLSearchParams(window.location.search);
-    const storedFilter = sessionStorage.getItem('projectFilter');
-    let initialFilter = urlParams.get('filter');
+        initialFilter = initialFilter || 'all';
 
-    // Restoration Logic
-    if (!initialFilter && storedFilter) {
-        initialFilter = storedFilter;
-        // Update URL to match stored filter
-        const newUrl = new URL(window.location);
-        if (initialFilter !== 'all') {
-            newUrl.searchParams.set('filter', initialFilter);
-        } else {
-            newUrl.searchParams.delete('filter');
+        // Apply initial filter (no animation)
+        applyFilter(initialFilter, false);
+
+        // Event Delegation for Buttons (Better than cloning)
+        const filterContainer = document.querySelector('.project-filters');
+        if (filterContainer) {
+            // Clone container to remove old listeners if any (simple way to clear)
+            const newContainer = filterContainer.cloneNode(true);
+            filterContainer.parentNode.replaceChild(newContainer, filterContainer);
+
+            newContainer.addEventListener('click', e => {
+                const btn = e.target.closest('.filter-btn');
+                if (!btn) return;
+
+                const filter = btn.getAttribute('data-filter') || 'all';
+
+                // Update Storage
+                sessionStorage.setItem('projectFilter', filter);
+
+                // Update URL (Push State for history)
+                const newUrl = new URL(window.location);
+                if (filter === 'all') newUrl.searchParams.delete('filter');
+                else newUrl.searchParams.set('filter', filter);
+
+                const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
+                if (currentParam !== filter) {
+                    history.pushState(null, '', newUrl);
+                }
+
+                applyFilter(filter, true);
+            });
         }
-        history.replaceState(null, '', newUrl);
+
+        // History Listener (Back/Forward)
+        const handlePopState = () => {
+            const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
+            sessionStorage.setItem('projectFilter', currentParam);
+            applyFilter(currentParam, true);
+        };
+
+        window.addEventListener('popstate', handlePopState);
+
+        // Cleanup listener when navigating away/swapping
+        document.addEventListener(
+            'astro:before-swap',
+            () => {
+                window.removeEventListener('popstate', handlePopState);
+            },
+            { once: true }
+        );
     }
-    
-    initialFilter = initialFilter || 'all';
 
-    // Apply initial filter (no animation)
-    applyFilter(initialFilter, false);
-
-    // Event Delegation for Buttons (Better than cloning)
-    const filterContainer = document.querySelector('.project-filters');
-    if (filterContainer) {
-        // Clone container to remove old listeners if any (simple way to clear)
-        const newContainer = filterContainer.cloneNode(true);
-        filterContainer.parentNode.replaceChild(newContainer, filterContainer);
-        
-        newContainer.addEventListener('click', (e) => {
-            const btn = e.target.closest('.filter-btn');
-            if (!btn) return;
-            
-            const filter = btn.getAttribute('data-filter') || 'all';
-             
-             // Update Storage
-             sessionStorage.setItem('projectFilter', filter);
-             
-             // Update URL (Push State for history)
-             const newUrl = new URL(window.location);
-             if (filter === 'all') newUrl.searchParams.delete('filter');
-             else newUrl.searchParams.set('filter', filter);
-             
-             const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
-             if (currentParam !== filter) {
-                 history.pushState(null, '', newUrl);
-             }
-
-             applyFilter(filter, true);
-        });
-    }
-    
-    // History Listener (Back/Forward)
-    const handlePopState = () => {
-        const currentParam = new URLSearchParams(window.location.search).get('filter') || 'all';
-        sessionStorage.setItem('projectFilter', currentParam);
-        applyFilter(currentParam, true);
-    };
-
-    window.addEventListener('popstate', handlePopState);
-    
-    // Cleanup listener when navigating away/swapping
-    document.addEventListener('astro:before-swap', () => {
-        window.removeEventListener('popstate', handlePopState);
-    }, { once: true });
-  }
-
-  // Run on load and after Astro View Transitions
-  setupFilters();
-  document.addEventListener('astro:after-swap', setupFilters);
+    // Run on load and after Astro View Transitions
+    setupFilters();
+    document.addEventListener('astro:after-swap', setupFilters);
 </script>
 
 <style>
